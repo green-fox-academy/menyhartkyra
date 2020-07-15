@@ -1,0 +1,70 @@
+main{
+    width: 70%;
+    margin: 0 auto;
+    padding: 4px;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 2em;
+}
+
+.header{
+    width:70%; 
+    margin: auto;
+    padding: 0.1em;
+}
+
+#header{
+    background-color: cadetblue;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    height: 1.2em;
+}
+
+.bordered{
+    border: solid gray 1px;
+}
+
+.posts div{
+    border: 1px solid gray;
+    margin: 4px;
+    padding: 4px;
+}
+
+textarea{
+    width: 100%;
+    padding: 4px;
+}
+
+label {
+    display: block;
+    /*font: 1rem 'Fira Sans', sans-serif;*/
+    margin: .4rem 0;
+    font-weight: bold;
+}
+
+.big{
+    font-size: 48px;
+    margin: 6px auto;
+}
+
+.grey:focus{
+    color: hotpink;
+}
+ .button{
+
+    font-family: 'Reenie Beanie', cursive;
+ }
+
+ h3{
+     margin: 4px;
+ }
+
+ textarea, input{
+    font-family: 'Reenie Beanie', cursive;
+    font-size: 0.8em;
+ }

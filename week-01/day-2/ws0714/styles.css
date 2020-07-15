@@ -1,0 +1,7 @@
+.bordered {
+    border: dotted 8px;
+}
+
+body {
+    width: 70%;
+}
