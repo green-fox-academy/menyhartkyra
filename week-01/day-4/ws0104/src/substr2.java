@@ -10,9 +10,10 @@ public class substr2 {
     int result = -1;
     int i;
     int k = 0;
-    boolean last = false;
+
     outer:
     for (i = 0; i <= input.length() - q.length(); i++) {
+
       for (k = 0; k < q.length(); k++) {
         if (input.charAt(i + k) == q.charAt(k)) {
           if (k == q.length() - 1) {    //szó végére értünk
@@ -32,6 +33,6 @@ public class substr2 {
 
     }
     return result;
-  }
 
+  }
 }
