@@ -1,8 +1,6 @@
 public class substr2 {
 
   public static void main(String[] args) {
-    //System.out.println(q.length());
-    //System.out.println(q.charAt(0));
     System.out.println(substrk("this is what searching I'm in", "searching"));
   }
 
