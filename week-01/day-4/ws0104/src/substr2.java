@@ -20,7 +20,6 @@ public class substr2 {
             result = i;
             break outer;
           }
-          last = true;
           continue;
         }
         if (k > 0) {
