@@ -7,7 +7,8 @@ public class Greet {
     String al = "Green Fox";
     greet(al);
   }
-  public static void greet(String al){
+
+  public static void greet(String al) {
     System.out.println("Greetings dear " + al);
   }
 }

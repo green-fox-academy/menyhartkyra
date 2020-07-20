@@ -7,7 +7,7 @@ public class Doubling {
     System.out.println(doubling(baseNum));
   }
 
-  public static int doubling (int baseNum){
+  public static int doubling(int baseNum) {
     baseNum *= 2;
     return baseNum;
   }
