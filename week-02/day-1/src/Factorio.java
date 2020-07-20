@@ -7,7 +7,7 @@ public class Factorio {
   }
 
   public static int factorio(int number) {
-    int factorial=1;
+    int factorial = 1;
     for (int i = 2; i < number + 1; i++) {
       factorial *= i;
     }
