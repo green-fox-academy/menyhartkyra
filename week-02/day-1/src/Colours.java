@@ -15,7 +15,7 @@ public class Colours {
     colors[1] = new String[] {"orange red", "red", "tomato"};
     colors[2] = new String[] {"orchid", "violet", "pink", "hot pink"};
 
-    for (String[] rows: colors) {
+    for (String[] rows : colors) {
       System.out.println(Arrays.toString(rows));
     }
 
