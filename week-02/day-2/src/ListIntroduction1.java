@@ -11,17 +11,17 @@ public class ListIntroduction1 {
     names.add("Amanda");
     System.out.println(names.size());
     System.out.println(names.get(2));
-    for ( String name : names ) {
-      System.out.println(names.indexOf(name)+1 + ". "  + name);
+    for (String name : names) {
+      System.out.println(names.indexOf(name) + 1 + ". " + name);
     }
     Iterator<String> name = names.iterator();
     System.out.println("Iterator:");
-    while(name.hasNext()){
+    while (name.hasNext()) {
       System.out.println(name.next());
     }
     names.remove(1);
     System.out.println("Reversed:");
-    for (int i = names.size()-1; i >= 0 ; i--) {
+    for (int i = names.size() - 1; i >= 0; i--) {
       System.out.println(names.get(i));
     }
     names.clear();
