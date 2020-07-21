@@ -16,7 +16,7 @@ public class MapIntroduction2 {
 
     //Remove the key-value pair with value The Lab
     for (String i : map.keySet()) {
-      if (map.get(i) == "The Lab") {
+      if (map.get(i).equals("The Lab")) {
         map.remove(i);
       }
     }
