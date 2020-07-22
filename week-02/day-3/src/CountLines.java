@@ -12,7 +12,7 @@ public class CountLines {
     System.out.println(numberOfLines("my-file2.txt"));
   }
 
-  public static int numberOfLines (String filename) {
+  public static int numberOfLines(String filename) {
     Path file = Paths.get(filename);
 
     int lines = 0;

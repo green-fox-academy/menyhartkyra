@@ -13,14 +13,15 @@ public class MatReview {
     System.out.println("hiba után"); //ezt már nem irja ki ha hiba volt
   }
 
-  public static void createFile(String fileName){
+  public static void createFile(String fileName) {
     try {
       Files.createFile(Paths.get(fileName));
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
-  public static int numberOfLines (String filename) throws IOException {
+
+  public static int numberOfLines(String filename) throws IOException {
     Path file = Paths.get(filename);
     int lines = 0;
     lines = (int) Files.lines(file).count();
