@@ -14,6 +14,7 @@ public class CountLines {
 
   public static int numberOfLines (String filename) {
     Path file = Paths.get(filename);
+
     int lines = 0;
     try {
       lines = (int) Files.lines(file).count();
