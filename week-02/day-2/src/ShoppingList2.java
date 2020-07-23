@@ -35,6 +35,7 @@ public class ShoppingList2 {
     System.out.println("Alice pays: " + sum(alice));
     System.out.println(more("Rice", bob, alice) + " buys more Rice");
     System.out.println(more("Potato", bob, alice) + " buys more Potato");
+
   }
 
   //How much does Bob pay?
