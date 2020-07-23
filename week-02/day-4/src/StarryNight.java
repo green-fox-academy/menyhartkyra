@@ -3,6 +3,7 @@ import javax.swing.*;
 
 import java.awt.*;
 
+
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class StarryNight {
@@ -16,19 +17,22 @@ public class StarryNight {
       drawSquare(graphics);
     }
   }
-  public static void drawSquare(Graphics graphics){
-    int size =7;
+
+  public static void drawSquare(Graphics graphics) {
+    int size = 7;
     graphics.setColor(getRandomColor());
     graphics.drawRect(getRandomCoor(), getRandomCoor(), size, size);
   }
+
   public static Color getRandomColor() {
     Random random = new Random();
     int limit = 256;
     return new Color(random.nextInt(limit), random.nextInt(limit), random.nextInt(limit));
   }
-  public static int getRandomCoor(){
+
+  public static int getRandomCoor() {
     int limit = 313;
-    int coor = (int) (Math.random()*limit);
+    int coor = (int) (Math.random() * limit);
     return coor;
   }
 

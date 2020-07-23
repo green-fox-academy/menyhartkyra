@@ -18,7 +18,7 @@ public class ConnectTheDots {
         new int[][] {{50, 100}, {70, 70}, {80, 90}, {90, 90}, {100, 70}, {120, 100}, {85, 130},
             {50, 100}};
     connectDotsWGreenLine(dots, graphics);
-    connectDotsWGreenLine(dots2,graphics);
+    connectDotsWGreenLine(dots2, graphics);
   }
 
   public static void connectDotsWGreenLine(int[][] dots, Graphics graphics) {
