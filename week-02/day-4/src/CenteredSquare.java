@@ -2,16 +2,17 @@ import javax.swing.*;
 
 import java.awt.*;
 
+
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class CenteredSquare {
 
   public static void mainDraw(Graphics graphics) {
     // Draw a green 10x10 square to the canvas' center
-    int centerX = WIDTH/2;
-    int centerY = HEIGHT/2;
+    int centerX = WIDTH / 2;
+    int centerY = HEIGHT / 2;
     graphics.setColor(Color.GREEN);
-    graphics.drawRect(centerX-5, centerY-5, 10, 10);
+    graphics.drawRect(centerX - 5, centerY - 5, 10, 10);
 
 
   }

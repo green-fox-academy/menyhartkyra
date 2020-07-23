@@ -5,19 +5,24 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class ColoredBox {
+public class PurpleSteps3d {
   public static void mainDraw(Graphics graphics) {
-    // Draw a box that has different colored lines on each edge.
-    graphics.setColor(Color.RED);
-    graphics.drawLine(50, 50, 150, 50);
-    graphics.setColor(Color.GREEN);
-    graphics.drawLine(50, 50, 50, 150);
+    // Reproduce this:
+    // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/assets/r4.png]
+    int x = 10;
+    int y = 10;
+    for (int i = 1; i < 6; i++) {
+      fillPurpleSquare(graphics, i * 10, x, y);
+      x += i * 10;
+      y += i * 10;
+    }
+  }
+
+  public static void fillPurpleSquare(Graphics graphics, int size, int x, int y) {
+    graphics.setColor(Color.decode("#9400D3"));
+    graphics.fillRect(x, y, size, size);
     graphics.setColor(Color.BLACK);
-    graphics.drawLine(150, 50, 150, 150);
-    graphics.setColor(Color.BLUE);
-    graphics.drawLine(50, 150, 150, 150);
-
-
+    graphics.drawRect(x - 1, y - 1, size, size);
   }
 
   // Don't touch the code below
@@ -33,6 +38,7 @@ public class ColoredBox {
     jFrame.setLocationRelativeTo(null);
     jFrame.setVisible(true);
     jFrame.pack();
+    jFrame.setBackground(Color.WHITE);
   }
 
   static class ImagePanel extends JPanel {

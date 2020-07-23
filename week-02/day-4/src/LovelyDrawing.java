@@ -3,6 +3,7 @@ import java.util.Random;
 import javax.swing.*;
 import java.awt.*;
 
+
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class LovelyDrawing {
@@ -22,12 +23,12 @@ public class LovelyDrawing {
     }
   }
 
-  public static void drawRegularTriangleWithRandomColors(Graphics graphics, int edge){
+  public static void drawRegularTriangleWithRandomColors(Graphics graphics, int edge) {
     int triangleHeight = calculateHeightFromEdge(edge);
     int halfWidth = WIDTH / 2;
     int halfEdge = edge / 2;
     int[] xCoordinates = {halfWidth - halfEdge, halfWidth, halfWidth + halfEdge};
-    int[] yCoordinates = {HEIGHT, HEIGHT - triangleHeight, HEIGHT} ;
+    int[] yCoordinates = {HEIGHT, HEIGHT - triangleHeight, HEIGHT};
     graphics.setColor(getRandomColor());
     graphics.fillPolygon(xCoordinates, yCoordinates, xCoordinates.length);
   }

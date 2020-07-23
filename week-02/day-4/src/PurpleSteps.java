@@ -10,9 +10,8 @@ public class PurpleSteps {
     // Reproduce this:
     // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/assets/r3.png]
     for (int i = 1; i < 20; i++) {
-      fillPurpleSquare(graphics, i*11, i*11);
+      fillPurpleSquare(graphics, i * 11, i * 11);
     }
-
   }
 
   public static void fillPurpleSquare(Graphics graphics, int x, int y) {

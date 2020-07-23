@@ -2,6 +2,7 @@ import javax.swing.*;
 
 import java.awt.*;
 
+
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class GoToCenter {
@@ -11,15 +12,15 @@ public class GoToCenter {
     // and draws a line from that point to the center of the canvas.
     // Draw at least 3 lines with that function using a loop.
     for (int i = 0; i < 3; i++) {
-      drawLineToCenter(i*20, 50*i, graphics);
+      drawLineToCenter(i * 20, 50 * i, graphics);
     }
 
 
   }
 
-  public static void drawLineToCenter(int x,int y, Graphics graphics){
-    int centerX = WIDTH/2;
-    int centerY = HEIGHT/2;
+  public static void drawLineToCenter(int x, int y, Graphics graphics) {
+    int centerX = WIDTH / 2;
+    int centerY = HEIGHT / 2;
     graphics.drawLine(x, y, centerX, centerY);
   }
 

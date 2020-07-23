@@ -2,6 +2,7 @@ import javax.swing.*;
 
 import java.awt.*;
 
+
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class HorizontalLines {
@@ -11,14 +12,15 @@ public class HorizontalLines {
     // and draws a 50 long horizontal line from that point.
     // Draw at least 3 lines with that function using a loop.
     for (int i = 1; i < 4; i++) {
-      drawHorizontalLines(i*20, i*30, graphics);
+      drawHorizontalLines(i * 20, i * 30, graphics);
     }
 
 
   }
-  public static void drawHorizontalLines(int x, int y, Graphics graphics){
+
+  public static void drawHorizontalLines(int x, int y, Graphics graphics) {
     int length = 50;
-    graphics.drawLine(x, y, x+length, y);
+    graphics.drawLine(x, y, x + length, y);
   }
 
   // Don't touch the code below

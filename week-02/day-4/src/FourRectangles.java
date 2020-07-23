@@ -3,16 +3,17 @@ import javax.swing.*;
 
 import java.awt.*;
 
+
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class FourRectangles {
 
-  public static void mainDraw(Graphics graphics){
+  public static void mainDraw(Graphics graphics) {
     // draw four different size and color rectangles.
     // avoid code duplication.
     for (int i = 1; i < 5; i++) {
       graphics.setColor(getRandomColor());
-      graphics.drawRect(i*10*i, 10, i*10, i*10);
+      graphics.drawRect(i * 10 * i, 10, i * 10, i * 10);
     }
 
 

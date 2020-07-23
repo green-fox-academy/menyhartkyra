@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import java.awt.*;
 
+
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 public class RainbowBoxFunction {
@@ -15,27 +16,27 @@ public class RainbowBoxFunction {
     String[] rainbow = {"red", "orange", "yellow", "green", "blue", "indigo", "violet"};
     drawColoredSquareToCenter(40, "red", graphics);
     int edge = 420;
-    for ( String colorname : rainbow ) {
+    for (String colorname : rainbow) {
       drawColoredSquareToCenter(edge, colorname, graphics);
-      edge -=60;
+      edge -= 60;
     }
 
 
   }
 
-  public static void drawColoredSquareToCenter(int edge, String colorname, Graphics graphics){
-    int centerX=WIDTH/2;
-    int centerY = HEIGHT/2;
+  public static void drawColoredSquareToCenter(int edge, String colorname, Graphics graphics) {
+    int centerX = WIDTH / 2;
+    int centerY = HEIGHT / 2;
     graphics.setColor(Color.decode(colorNameToHex(colorname)));
-    graphics.fillRect(centerX-edge/2, centerY-edge/2, edge, edge);
+    graphics.fillRect(centerX - edge / 2, centerY - edge / 2, edge, edge);
   }
 
-  public static String colorNameToHex(String colorname){
+  public static String colorNameToHex(String colorname) {
     HashMap<String, String> colorcode = new HashMap<>();
     colorcode.put("red", "#FF0000");
     colorcode.put("orange", "#FFA500");
     colorcode.put("yellow", "#FFFF00");
-    colorcode.put("green","#008000");
+    colorcode.put("green", "#008000");
     colorcode.put("blue", "#0000FF");
     colorcode.put("indigo", "#4B0082");
     colorcode.put("violet", "#EE82EE");

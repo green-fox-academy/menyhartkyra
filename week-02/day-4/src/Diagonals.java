@@ -12,11 +12,11 @@ public class Diagonals {
 
     int xLeft = 10;
     int yUp = 10;
-    int xRight = xLeft+WIDTH;
-    int yDown =yUp + HEIGHT;
-    if (xLeft == 0 && yUp == 0){
+    int xRight = xLeft + WIDTH;
+    int yDown = yUp + HEIGHT;
+    if (xLeft == 0 && yUp == 0) {
       graphics.setColor(Color.GREEN);
-    }else {
+    } else {
       graphics.setColor(Color.RED);
     }
     graphics.drawLine(xLeft, yUp, xRight, yDown);
