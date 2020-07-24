@@ -12,41 +12,42 @@ public class LinePlay{
   }
 
   public static void caustica (Graphics graphics, int divide ){
-    int repeat = (int) Math.sqrt(divide);
-    int x = WIDTH/repeat;
-    int y = HEIGHT/repeat;
+    int numberOfRepeats = (int) Math.sqrt(divide); //egy oldalon hányszor ismétlődik
+    int x = WIDTH/numberOfRepeats;
+    int y = HEIGHT/numberOfRepeats;
+
 
     for (int j = 0; j < divide; j++) {
       graphics.setColor(Color.MAGENTA);
-      for (int i=40/repeat; i < 320/repeat; i+=20/repeat) {
-        for (int k = 0; k < repeat; k++) {
-          graphics.drawLine(i+(x*j), (y*j), 320/repeat+(x*j), i+(y*j));//átlók
-          graphics.drawLine(i+(x*j), k*y, 320/repeat+(x*j), i+k*y); //jobb felül
-          graphics.drawLine(i+(k*x), (y*j), 320/repeat+(k*x), i+(y*j)); //bal alul
+      for (int i=40/numberOfRepeats; i < 320/numberOfRepeats; i+=20/numberOfRepeats) {
+        for (int k = 0; k < numberOfRepeats; k++) {
+          graphics.drawLine(i+(x*j), (y*j), 320/numberOfRepeats+(x*j), i+(y*j));//átlók
+          graphics.drawLine(i+(x*j), k*y, 320/numberOfRepeats+(x*j), i+k*y); //jobb felül
+          graphics.drawLine(i+(k*x), (y*j), 320/numberOfRepeats+(k*x), i+(y*j)); //bal alul
         }
 
       }
       graphics.setColor(Color.GREEN);
-      for (int i = 40/repeat; i < 320/repeat; i+=20/repeat) {
-        for (int k = 0; k < repeat; k++) {
-          graphics.drawLine((x*j), i+(y*j), i-(20/repeat)+(x*j), 320/repeat+(y*j));//átlók
-          graphics.drawLine((x*j), i+(y*k), i-(20/repeat)+(x*j), 320/repeat+(y*k));   //jobb felül
-          graphics.drawLine((k*x), i+(y*j), i-(20/repeat)+(k*x), 320/repeat+(y*j)); //bal alul
+      for (int i = 40/numberOfRepeats; i < 320/numberOfRepeats; i+=20/numberOfRepeats) {
+        for (int k = 0; k < numberOfRepeats; k++) {
+          graphics.drawLine((x*j), i+(y*j), i-(20/numberOfRepeats)+(x*j), 320/numberOfRepeats+(y*j));//átlók
+          graphics.drawLine((x*j), i+(y*k), i-(20/numberOfRepeats)+(x*j), 320/numberOfRepeats+(y*k));   //jobb felül
+          graphics.drawLine((k*x), i+(y*j), i-(20/numberOfRepeats)+(k*x), 320/numberOfRepeats+(y*j)); //bal alul
         }
 
       }
     }
 
-    /*for (int j = 0; j < repeat; j++) {
+    /*for (int j = 0; j < numberOfrepeats; j++) {
       graphics.setColor(Color.MAGENTA);
-      for (int i=40/repeat; i < 320/repeat; i+=20/repeat) {
-        graphics.drawLine(i+(x*j), 0, 320/repeat+(x*j), i); //jobb felül
-        graphics.drawLine(i, (y*j), 320/repeat, i+(y*j)); //bal alul
+      for (int i=40/numberOfrepeats; i < 320/numberOfrepeats; i+=20/numberOfrepeats) {
+        graphics.drawLine(i+(x*j), 0, 320/numberOfrepeats+(x*j), i); //jobb felül
+        graphics.drawLine(i, (y*j), 320/numberOfrepeats, i+(y*j)); //bal alul
       }
       graphics.setColor(Color.GREEN);
-      for (int i = 40/repeat; i < 320/repeat; i+=20/repeat) {
-        graphics.drawLine((x*j), i, i-(20/repeat)+(x*j), 320/repeat);   //jobb felül
-        graphics.drawLine(0, i+(y*j), i-(20/repeat), 320/repeat+(y*j)); //bal alul
+      for (int i = 40/numberOfrepeats; i < 320/numberOfrepeats; i+=20/numberOfrepeats) {
+        graphics.drawLine((x*j), i, i-(20/numberOfrepeats)+(x*j), 320/numberOfrepeats);   //jobb felül
+        graphics.drawLine(0, i+(y*j), i-(20/numberOfrepeats), 320/numberOfrepeats+(y*j)); //bal alul
       }
     }*/
 
