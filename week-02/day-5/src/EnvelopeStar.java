@@ -13,13 +13,9 @@ public class EnvelopeStar {
   }
 
   public static void drawLinesInQuarter(Graphics graphics, int x1, int density) {
-    int numberOfLines = WIDTH / 2 / density +1;
+    int numberOfLines = WIDTH / 2 / density + 1;
     int yCenter = HEIGHT / 2;
     int xCenter = WIDTH / 2;
-    /*int sign = 1;
-    if (x1 == WIDTH) {
-      sign = -1;
-    }*/
     int sign = (x1 == 0) ? 1 : -1;
     for (int i = 0; i < numberOfLines; i++) {
       graphics.drawLine(x1 + density * i * sign, yCenter, xCenter,
@@ -28,13 +24,6 @@ public class EnvelopeStar {
     }
   }
 
-  /*public static void drawLinesArrivingHorizontal(Graphics graphics, int y1) {
-    int x1 = WIDTH / 2;
-    int numberOfLines = (WIDTH / 2) / 20 + 1;
-    for (int i = 0; i < numberOfLines; i++) {
-      graphics.drawLine(x1, y1, WIDTH / 4+(20*i), HEIGHT / 2);
-    }
-  }*/
 
   // Don't touch the code below
   static int WIDTH = 320;
