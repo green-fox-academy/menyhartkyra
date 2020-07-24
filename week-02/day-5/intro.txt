@@ -1,0 +1,20 @@
+So as per our exercise for today's demo, let me introduce myself.
+My name is menyhárt kyra, and i studied physics at elte from 2015-2019. then i started
+studying actuarial mathematics, with other word insurance mathematics, but that didnt
+intereset me, but slowly over the years i decided that
+i would like to work in programming, and i know that i made a right choice
+bc so far im really enjoying this course. i think programming is really cool,
+and finding solutions to problems and seeing it work is always a good feeling.
+
+this two weeks so far have been a really positive experience, we learned a lot already
+if i have to highlight  sth, then i would say im glad that i finally understand
+github, and in java itself, i really liked hashmaps. how you can make pairs and access
+them, i was glad that i learned to use it.
+
+okay so the example that i brought is sth that is basicly just one line of command,
+i hope it will be okay. and might not be that interesting, but i liked it.
+this is sth that i sent in the slack group too, so its not gonna be new.
+so the problem was, that you use a git repository, and you push your files,
+but later you realize that you didnt need to push many files w a certain format, but
+that format wasnt in the .gitignore file yet.
+so what i did of course is google it, and found it in a stackoverflow question
