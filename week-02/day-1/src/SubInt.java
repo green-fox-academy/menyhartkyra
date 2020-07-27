@@ -32,9 +32,9 @@ public class SubInt {
     //System.out.println("preresult: " + Arrays.toString(preresult));
     int[] result = new int[resultLength];
     int cnt = 0;
-    for (int j = 0; j < preresult.length; j++) {
-      if (preresult[j] != 0) {
-        result[cnt] = preresult[j];
+    for (int i : preresult) {
+      if (i != 0) {
+        result[cnt] = i;
         cnt++;
       }
     }

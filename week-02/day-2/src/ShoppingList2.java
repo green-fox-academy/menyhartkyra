@@ -43,31 +43,36 @@ public class ShoppingList2 {
 
   //Who buys more different products?
   //Who buys more products? (piece)
-  public static int sum(HashMap<String, Double> list){
+  public static int sum(HashMap<String, Double> list) {
     int sum = 0;
-    for ( String key : list.keySet()) {
+    for (String key : list.keySet()) {
       sum += list.get(key);
     }
     return sum;
   }
+
   //Who buys more Rice?
   //Who buys more Potato?
-  public static String more(String key, HashMap<String, Double> bob, HashMap<String, Double> alice){
+  public static String more(String key, HashMap<String, Double> bob,
+                            HashMap<String, Double> alice) {
     double Bob = 0;
     double Alice = 0;
-    for ( String i : bob.keySet() ) {
-      if (i.equals(key))
+    for (String i : bob.keySet()) {
+      if (i.equals(key)) {
         Bob = bob.get(key);
+      }
     }
-    for ( String i : alice.keySet() ) {
-      if (i.equals(key))
+    for (String i : alice.keySet()) {
+      if (i.equals(key)) {
         Alice = alice.get(key);
+      }
     }
-    if (Bob>Alice)
+    if (Bob > Alice) {
       return "Bob";
-    else if (Alice>Bob)
+    } else if (Alice > Bob) {
       return "Alice";
-    else
+    } else {
       return "senki";
+    }
   }
 }
