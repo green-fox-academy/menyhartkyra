@@ -5,29 +5,28 @@ public class PostIt {
   private String text;
   private String textColor;
 
-  public PostIt(){
-
+  public PostIt() {
   }
 
-  public PostIt(String backgroundColor, String text, String textColor){
+  public PostIt(String backgroundColor, String text, String textColor) {
     this.backgroundColor = backgroundColor;
     this.text = text;
     this.textColor = textColor;
   }
 
-  public String getBackgroundColor(){
+  public String getBackgroundColor() {
     return backgroundColor;
   }
 
-  public String getText(){
+  public String getText() {
     return text;
   }
 
-  public String getTextColor(){
+  public String getTextColor() {
     return textColor;
   }
 
-  public void setBackgroundColor(String backgroundColor){
+  public void setBackgroundColor(String backgroundColor) {
     this.backgroundColor = backgroundColor;
   }
 
