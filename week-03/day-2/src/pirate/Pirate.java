@@ -2,12 +2,12 @@ package pirate;
 
 public class Pirate {
   private int intoxication;
-  private boolean isDead;
+  private String state;
   private String name;
 
-  public Pirate(String name){
+  public Pirate(String name) {
     this.intoxication = 0;
-    this.isDead = false;
+    this.state = "alive";
     this.name = name;
   }
 
@@ -15,16 +15,16 @@ public class Pirate {
     return name;
   }
 
-  public boolean isDead() {
-    return isDead;
+  public String getState() {
+    return state;
   }
 
-  public void setDead(boolean dead) {
-    isDead = dead;
+  public void setState(String state) {
+    this.state = state;
   }
 
   public int getIntoxication() {
-    return intoxication;
+    return this.intoxication;
   }
 
   public void setIntoxication(int intoxication) {
@@ -32,7 +32,7 @@ public class Pirate {
   }
 
   public void drinkSomeRum() {
-    if (this.isDead()){
+    if (this.getState() == "dead") {
       die();
       return;
     }
@@ -40,7 +40,7 @@ public class Pirate {
   }
 
   public void howsItGoingMate() {
-    if (this.isDead()){
+    if (this.getState() == "dead") {
       die();
       return;
     }
@@ -53,18 +53,18 @@ public class Pirate {
     }
   }
 
-  public void die(){
-    this.setDead(true);
+  public void die() {
+    this.setState("dead");
     //System.out.println(this.name + " is dead.");
   }
 
-  public void passOut(){
-    System.out.println(this.getName() + " passed out");
-  }
-
-  public int getRandomNumber(int limit) {
-    int random = (int) Math.round(Math.random() * limit);
-    return random;
+  public void passOut() {
+    if (this.getState() == "dead")
+      return;
+    else {
+      System.out.println(this.getName() + " passed out");
+      this.setState("passed out");
+    }
   }
 
   public void brawl(Pirate otherPirate) {
@@ -79,13 +79,10 @@ public class Pirate {
     }
   }
 
-  public static void main(String[] args) {
-    Pirate jack = new Pirate("Jack");
-    Pirate barbarossa = new Pirate("Barbarossa");
-    //jack.drinkSomeRum();
-    jack.howsItGoingMate();
-    jack.die();
-    jack.howsItGoingMate();
-    jack.brawl(barbarossa);
+
+
+  public static int getRandomNumber(int limit) {
+    int random = (int) Math.round(Math.random() * limit);
+    return random;
   }
 }
