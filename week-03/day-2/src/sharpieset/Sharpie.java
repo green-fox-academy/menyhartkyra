@@ -30,29 +30,30 @@ public class Sharpie {
     this.color = color;
   }
 
-  public Sharpie(String color, double width){
+  public Sharpie(String color, double width) {
     this(color, width, 100);
   }
 
-  public Sharpie(String color, double width, double inkAmount){
+  public Sharpie(String color, double width, double inkAmount) {
     this.color = color;
     this.width = width;
     this.inkAmount = inkAmount;
   }
 
-  public void use(){
+  public void use() {
     this.inkAmount--;
   }
 
-  public String sharpieToString(Sharpie sharpie){
-    String sharpieString = sharpie.color + " " +  sharpie.getWidth() + " " + sharpie.getInkAmount();
+  public String sharpieToString(Sharpie sharpie) {
+    String sharpieString = sharpie.color + " " + sharpie.getWidth() + " " + sharpie.getInkAmount();
     return sharpieString;
   }
 
   public static void main(String[] args) {
     Sharpie sharpie = new Sharpie("black", 67.5);
     sharpie.use();
-    System.out.println(sharpie.getColor() + " " + sharpie.getWidth() + " " + sharpie.getInkAmount());
+    System.out
+        .println(sharpie.getColor() + " " + sharpie.getWidth() + " " + sharpie.getInkAmount());
     System.out.println(sharpie.sharpieToString(sharpie));
   }
 

@@ -1,3 +1,4 @@
+import blog.*;
 import farm.*;
 import sharpieset.*;
 
@@ -22,5 +23,15 @@ public class Main {
     System.out.println(farm);
     farm.slaughter(farm.animals);
     System.out.println(farm);
+
+    Blog blog = new Blog();
+    blog.add(new BlogPost("me", "most"));
+    blog.add(new BlogPost("god", "tegnap"));
+    blog.add(new BlogPost("peter", "i dont remember"));
+    System.out.println(blog);
+    blog.update(2, new BlogPost("johnny", "soon"));
+    System.out.println(blog);
+    blog.delete(0);
+    System.out.println(blog);
   }
 }

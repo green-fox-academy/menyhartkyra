@@ -4,7 +4,7 @@ public class Car {
   private int gasAmount;
   private int capacity;
 
-  public Car(){
+  public Car() {
     this.setCapacity(100);
     this.setGasAmount(0);
   }

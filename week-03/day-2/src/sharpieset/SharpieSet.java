@@ -1,4 +1,5 @@
 package sharpieset;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,16 +9,17 @@ public class SharpieSet {
 
   public List<Sharpie> sharpieList;
 
-  public SharpieSet(){
+  public SharpieSet() {
     this.sharpieList = new ArrayList<>();
     System.out.println("letrejott sharpielist");
   }
 
-  public int countUsable(List<Sharpie> sharpieList){
+  public int countUsable(List<Sharpie> sharpieList) {
     int numberOfUsableSharpies = 0;
-    for ( Sharpie sharpie : sharpieList) {
-      if (sharpie.getInkAmount() != 0)
+    for (Sharpie sharpie : sharpieList) {
+      if (sharpie.getInkAmount() != 0) {
         numberOfUsableSharpies++;
+      }
     }
     return numberOfUsableSharpies;
   }
@@ -40,10 +42,11 @@ public class SharpieSet {
     System.out.println(stringSharpieList);
   }*/
 
-  public void removeTrash(List<Sharpie> sharpieList){
-    for (int i = 0; i < sharpieList.size(); i++  ) {
-      if (sharpieList.get(i).getInkAmount() == 0)
+  public void removeTrash(List<Sharpie> sharpieList) {
+    for (int i = 0; i < sharpieList.size(); i++) {
+      if (sharpieList.get(i).getInkAmount() == 0) {
         sharpieList.remove(i);
+      }
     }
   }
 

@@ -12,7 +12,7 @@ public class Station {
     this.gasAmount = gasAmount;
   }
 
-  public void refill(Car car){
+  public void refill(Car car) {
     this.gasAmount -= car.getCapacity();
     car.setGasAmount(car.getCapacity());
   }

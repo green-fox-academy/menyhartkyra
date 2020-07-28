@@ -18,7 +18,8 @@ public class Main {
 
     station.setGasAmount(1000);
     station.refill(car);
-    System.out.println("car gasamount: " + car.getGasAmount() + " car capacity: " + car.getCapacity());
+    System.out
+        .println("car gasamount: " + car.getGasAmount() + " car capacity: " + car.getCapacity());
 
 
   }
