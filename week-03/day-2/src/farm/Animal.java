@@ -5,6 +5,7 @@ public class Animal {
   private int hunger;
   private int thirst;
 
+
   public int getHunger() {
     return hunger;
   }
@@ -21,19 +22,20 @@ public class Animal {
     this.thirst = thirst;
   }
 
-  public Animal(){
+  public Animal() {
     this.hunger = 50;
     this.thirst = 50;
   }
 
-  public void eat(){
+  public void eat() {
     this.hunger--;
   }
-  public void drink(){
+
+  public void drink() {
     this.thirst--;
   }
 
-  public void play(){
+  public void play() {
     this.hunger++;
     this.thirst++;
   }
@@ -45,6 +47,11 @@ public class Animal {
     System.out.println(tiger.hunger + " " + tiger.thirst);
   }
 
-
-
+  @Override
+  public String toString() {
+    return "Animal{" +
+        "hunger=" + hunger +
+        ", thirst=" + thirst +
+        '}';
+  }
 }
