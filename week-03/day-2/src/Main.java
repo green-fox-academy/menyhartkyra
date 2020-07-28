@@ -19,7 +19,6 @@ public class Main {
     farm.breed(elephant);
     farm.breed(dolphin);
     dolphin.setHunger(15);
-
     System.out.println(farm);
     farm.slaughter(farm.animals);
     System.out.println(farm);

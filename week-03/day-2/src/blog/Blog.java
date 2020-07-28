@@ -10,21 +10,21 @@ public class Blog {
     blogPosts = new ArrayList<>();
   }
 
-  public void add(BlogPost blogPost){
+  public void add(BlogPost blogPost) {
     blogPosts.add(blogPost);
   }
 
-  public void delete(int i){
+  public void delete(int i) {
     blogPosts.remove(i);
   }
 
-  public void update(int i, BlogPost newBlogPost){
+  public void update(int i, BlogPost newBlogPost) {
     blogPosts.remove(i);
     blogPosts.add(i, newBlogPost);
   }
 
   @Override
   public String toString() {
-    return  blogPosts + " ";
+    return blogPosts + " ";
   }
 }

@@ -7,18 +7,18 @@ public class BlogPost {
   private String text;
   private String publicationDate;
 
-  public BlogPost(String authorName, String text, String title, String publicationDate){
+  public BlogPost(String authorName, String text, String title, String publicationDate) {
     this.authorName = authorName;
     this.publicationDate = publicationDate;
     this.text = text;
     this.title = title;
   }
 
-  public BlogPost(String authorName, String title, String publicationDate){
-    this(authorName, null, title,publicationDate);
+  public BlogPost(String authorName, String title, String publicationDate) {
+    this(authorName, null, title, publicationDate);
   }
 
-  public BlogPost(String authorName, String publicationDate){
+  public BlogPost(String authorName, String publicationDate) {
     this(authorName, null, publicationDate);
   }
 
