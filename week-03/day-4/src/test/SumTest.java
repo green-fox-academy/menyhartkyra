@@ -38,9 +38,9 @@ class SumTest {
     oneElement.add(5);
     assertEquals(5, sum.sum(oneElement));
   }
-
+  @Test
   void testWtihNull(){
     ArrayList<Integer> nullList = null;
-    assertEquals(null, sum.sum(nullList));
+    
   }
 }

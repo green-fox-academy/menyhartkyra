@@ -32,16 +32,16 @@ public class Pirate {
   }
 
   public void drinkSomeRum() {
-    if (this.getState() == "dead") {
-      die();
+    if (this.getState().equals("dead")) {
+      System.out.println("he's dead");
       return;
     }
     this.intoxication++;
   }
 
   public void howsItGoingMate() {
-    if (this.getState() == "dead") {
-      die();
+    if (this.getState().equals("dead")) {
+      System.out.println("he's dead");
       return;
     }
     if (this.intoxication > 0) {
@@ -59,15 +59,18 @@ public class Pirate {
   }
 
   public void passOut() {
-    if (this.getState() == "dead")
+    if (this.getState().equals("dead")) {
       return;
-    else {
-      System.out.println(this.getName() + " passed out");
-      this.setState("passed out");
     }
+    System.out.println(this.getName() + " passed out");
+    this.setState("passed out");
   }
 
   public void brawl(Pirate otherPirate) {
+    if(otherPirate.getState().equals("dead") || this.getState().equals("dead")){
+      return;
+    }
+
     int chance = getRandomNumber(2);
     if (chance == 0) {
       System.out.println(this.getName() + " died");
@@ -80,9 +83,7 @@ public class Pirate {
   }
 
 
-
   public static int getRandomNumber(int limit) {
-    int random = (int) Math.round(Math.random() * limit);
-    return random;
+    return (int) Math.round(Math.random() * limit);
   }
 }

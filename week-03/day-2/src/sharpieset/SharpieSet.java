@@ -29,7 +29,7 @@ public class SharpieSet {
     sharpieList.add(new Sharpie("orange", 35.2, 5));
     sharpieList.add(new Sharpie("black", 16.8, 6));
     sharpieList.add(new Sharpie("red", 50.1, 15));
-    sharpieList.add(new Sharpie("yellow", 67.2, 19));
+    sharpieList.add(new Sharpie("yellow", 67.2, 0));
     sharpieList.add(new Sharpie("green", 40.7, 0));
 
   }
@@ -46,6 +46,7 @@ public class SharpieSet {
     for (int i = 0; i < sharpieList.size(); i++) {
       if (sharpieList.get(i).getInkAmount() == 0) {
         sharpieList.remove(i);
+        i--;
       }
     }
   }

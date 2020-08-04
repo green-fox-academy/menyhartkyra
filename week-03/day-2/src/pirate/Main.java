@@ -12,7 +12,7 @@ public class Main {
 
     Ship ship = new Ship();
     Pirate captain = new Pirate("The Captain");
-    ship.fillship(captain);
+    ship.fillship();
     for ( Pirate pirate :ship.pirates) {
       System.out.println(pirate.getName());
     }

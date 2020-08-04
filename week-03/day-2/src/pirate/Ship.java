@@ -5,18 +5,19 @@ import java.util.List;
 
 public class Ship {
   List<Pirate> pirates;
-  //Pirate captain;
+  Pirate captain;
 
   public Ship(){
     pirates = new ArrayList<>();
+    captain = new Pirate("the captain");
   }
 
-  public void fillship(Pirate captain){
-    pirates.add(captain);
-    fillPirates(pirates);
+  public void fillship(){
+    //pirates.add(captain);
+    fillPirates();
   }
 
-  public void fillPirates(List<Pirate> pirates){
+  public void fillPirates(){
     for (int i = 0; i < Pirate.getRandomNumber(10); i++) {
       String name = String.valueOf(i);
       pirates.add(new Pirate(name));
@@ -24,7 +25,7 @@ public class Ship {
   }
 
   public void info(){
-    Pirate captain = pirates.get(0);
+
     if (captain.getIntoxication() == 0) {
       System.out.println("The Captain hasn't consumed rum yet.");
     } else {
