@@ -9,10 +9,6 @@ public class Student extends Person {
     return previousOrganization;
   }
 
-  public void setPreviousOrganization(String previousOrganization) {
-    this.previousOrganization = previousOrganization;
-  }
-
   public int getSkippedDays() {
     return skippedDays;
   }

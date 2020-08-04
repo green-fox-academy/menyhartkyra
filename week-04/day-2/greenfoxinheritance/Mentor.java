@@ -5,15 +5,9 @@ import greenfoxinheritance.enums.Levels;
 public class Mentor extends Person {
   private Levels level;
 
-  //region getters setters
   public Levels getLevel() {
     return level;
   }
-
-  public void setLevel(Levels level) {
-    this.level = level;
-  }
-  //endregion
 
   public Mentor(String name, int age, String gender, Levels level) {
     setName(name);

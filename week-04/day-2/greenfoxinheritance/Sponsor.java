@@ -4,25 +4,9 @@ public class Sponsor extends Person {
   private String company;
   private int hiredStudents;
 
-  //region getters setters
-
-
-  public int getHiredStudents() {
-    return hiredStudents;
-  }
-
-  public void setHiredStudents(int hiredStudents) {
-    this.hiredStudents = hiredStudents;
-  }
-
-  public String getCompany() {
-    return company;
-  }
-
   public void setCompany(String company) {
     this.company = company;
   }
-  //endregion
 
   public Sponsor() {
     super();
