@@ -32,19 +32,19 @@ public class Plant {
   }
   //endregion
 
-  public Plant(String colour){
+  public Plant(String colour) {
     this.colour = colour;
     waterAmount = 0;
   }
 
-  void water(double waterFor1Plant){
+  void water(double waterFor1Plant) {
     waterAmount += waterFor1Plant;
   }
 
   public boolean doesNeedWater() {
-    if (this instanceof Flower){
+    if (this instanceof Flower) {
       return getWaterAmount() < 5;
-    } else if (this instanceof Tree){
+    } else if (this instanceof Tree) {
       return getWaterAmount() < 10;
     }
     return false;
