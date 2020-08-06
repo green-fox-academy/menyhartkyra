@@ -13,7 +13,6 @@ public class Ship {
   }
 
   public void fillship(){
-    //pirates.add(captain);
     fillPirates();
   }
 

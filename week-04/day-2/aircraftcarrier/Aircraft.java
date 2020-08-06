@@ -3,12 +3,18 @@ package aircraftcarrier;
 public class Aircraft {
   private int ammo;
   private int maxAmmo;
-  private int baseDmg;
+  private int baseDamage;
   private boolean isPriority;
 
   //region getters setters
-  public void setBaseDmg(int baseDmg) {
-    this.baseDmg = baseDmg;
+  public void setBaseDamage(int baseDamage) {
+    this.baseDamage = baseDamage;
+  }
+
+  public Aircraft( int maxAmmo, int baseDamage, boolean isPriority){
+    this.maxAmmo = maxAmmo;
+    this.baseDamage = baseDamage;
+    this.isPriority = isPriority;
   }
 
   public void setMaxAmmo(int maxAmmo) {
@@ -28,12 +34,8 @@ public class Aircraft {
   }
   //endregion
 
-  public Aircraft() {
-    ammo = 0;
-  }
-
   int fight() {
-    int damageDealt = ammo * baseDmg;
+    int damageDealt = ammo * baseDamage;
     ammo = 0;
     return damageDealt;
   }
@@ -55,8 +57,8 @@ public class Aircraft {
 
   String getStatus() {
     String status =
-        "Type " + gettype() + ", Ammo: " + ammo + ", Base damage: " + baseDmg + ", All damage: " +
-            ammo * baseDmg;
+        "Type " + gettype() + ", Ammo: " + ammo + ", Base damage: " + baseDamage + ", All damage: " +
+            ammo * baseDamage;
     return status;
   }
 
@@ -69,7 +71,7 @@ public class Aircraft {
     return "Aircraft{" +
         "ammo=" + ammo +
         ", maxAmmo=" + maxAmmo +
-        ", baseDmg=" + baseDmg +
+        ", baseDmg=" + baseDamage +
         ", isPriority=" + isPriority +
         '}';
   }

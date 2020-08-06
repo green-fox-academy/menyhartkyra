@@ -4,7 +4,7 @@ public class Tree extends Plant {
 
   public Tree(String colour) {
     super(colour);
-    setMinWater(10);
+    minWater = 10;
     setWaterAbsorption(0.4);
   }
 

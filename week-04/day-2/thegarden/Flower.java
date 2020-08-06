@@ -12,6 +12,4 @@ public class Flower extends Plant {
   void water(double waterFor1Plant) {
     setWaterAmount(getWaterAmount() + getWaterAbsorption() * waterFor1Plant);
   }
-
-
 }

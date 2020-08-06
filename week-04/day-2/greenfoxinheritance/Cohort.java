@@ -35,6 +35,4 @@ public class Cohort {
         "The " + name + " cohort has " + students.size() + " students and " + mentors.size() +
             " mentors.");
   }
-
-
 }

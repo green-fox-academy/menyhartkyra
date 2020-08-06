@@ -15,11 +15,8 @@ public class Sponsor extends Person {
   }
 
   public Sponsor(String name, int age, String gender, String company) {
-    setName(name);
-    setAge(age);
-    setGender(gender);
-    setCompany(company);
-    hiredStudents = 0;
+    super(name, age, gender);
+    this.company = company;
   }
 
   @Override

@@ -19,9 +19,7 @@ public class Student extends Person {
   //endregion
 
   public Student(String name, int age, String gender, String previousOrganization) {
-    setName(name);
-    setAge(age);
-    setGender(gender);
+    super(name, age, gender);
     this.previousOrganization = previousOrganization;
     skippedDays = 0;
   }

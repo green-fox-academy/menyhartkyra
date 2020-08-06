@@ -4,7 +4,7 @@ public class Plant {
   private String colour;
   private double waterAmount;
   private double waterAbsorption;
-  private int minWater;
+  protected int minWater;
 
   //region getters setters
   public String getColour() {
@@ -42,11 +42,6 @@ public class Plant {
   }
 
   public boolean doesNeedWater() {
-    if (this instanceof Flower) {
-      return getWaterAmount() < 5;
-    } else if (this instanceof Tree) {
-      return getWaterAmount() < 10;
-    }
-    return false;
+    return getWaterAmount() < minWater;
   }
 }

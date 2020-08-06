@@ -19,6 +19,4 @@ public class Main {
     garden.water(70);
     garden.info();
   }
-
-
 }

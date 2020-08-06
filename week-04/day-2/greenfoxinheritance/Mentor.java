@@ -10,9 +10,7 @@ public class Mentor extends Person {
   }
 
   public Mentor(String name, int age, String gender, Levels level) {
-    setName(name);
-    setAge(age);
-    setGender(gender);
+    super(name, age, gender);
     this.level = level;
   }
 
