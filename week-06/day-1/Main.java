@@ -1,5 +1,8 @@
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -11,5 +14,14 @@ public class Main {
 
     SquaredValueOfPositiveNumbers.printSqaredValueOfPositiveNumbers(numbers);
 
+    List<Integer> numbers3 = Arrays.asList(3, 9, 2, 8, 6, 5);
+//    Map<Integer, Integer> map = numbers3.stream()
+//        .collect(Collectors.toMap(
+//            number -> number,
+//            number -> number*number));
+    //IntSummaryStatistics stats = map.values().stream().mapToInt((number) -> number).summaryStatistics();
+    List<Integer> numbersSqaredBiggerThan20 =
+        numbers3.stream().filter(number -> number * number > 20).collect(Collectors.toList());
+    System.out.println(numbersSqaredBiggerThan20);
   }
 }
