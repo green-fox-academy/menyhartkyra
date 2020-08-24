@@ -3,6 +3,7 @@ import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -31,5 +32,19 @@ public class Main {
     List<Integer> numbersSqaredBiggerThan20 =
         numbers3.stream().filter(number -> number * number > 20).collect(Collectors.toList());
     System.out.println(numbersSqaredBiggerThan20);
+
+    //exercise 5
+    List<Integer> numbers5 = Arrays.asList(5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2);
+    int sumOfOdds = numbers5.stream()
+        .filter(n -> n % 2 != 0)
+        .mapToInt(n -> n).sum();
+    System.out.println("Sum of odd numbers: " + sumOfOdds);
+
+    //exercise 6
+    String s = "dkdAckIVkdL";
+    Stream<Character> characterStream = s.chars()
+        .mapToObj(c -> (char) c);
+    characterStream.filter(Character::isUpperCase).forEach(System.out::print);
+
   }
 }
