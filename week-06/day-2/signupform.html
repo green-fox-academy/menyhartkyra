@@ -3,8 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Sign up form</title>
+    <link rel="stylesheet" type="text/css" href="signupform.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id="box">
+    <header><h1>SIGN UP</h1>
+    </header>
+    <form>
+        <div class="left-box">
+            <div class="form-row">
+                <label for='username'>USERNAME</label>
+                <input id='username' name='username' type='text' autofocus required minlength="1" maxlength="32"/>
+            </div>
+            <div class="form-row">
+                <label for='email'>EMAIL</label>
+                <input id='email' name='email' type="email"/>
+            </div>
+            <div class="form-row">
+                <label for='password'>PASSWORD</label>
+                <input id='password' name='password' type="password"/>
+            </div>
+            <div class="form-row">
+                <label for='passwordagain'>RETYPE PASSWORD</label>
+                <input id='passwordagain' name='passwordagain' type="password"/>
+            </div>
+        </div>
+        <div class="right-box">
+            <div class="sing-in-with">
+                <button class="facebook">Facebook</button>
+                <button class="twitter">Twitter</button>
+                <button class="gmail">Gmail</button>
+            </div>
+        </div>
+        <div class="or">OR</div>
+    </form>
+</div>
 
 </body>
 </html>

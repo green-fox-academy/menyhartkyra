@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #EAEDF0;
+    color: dimgrey;
+    font-family: "Open Sans";
+    font-size: 15px;
+}
+
+#box{
+    position: relative;
+    margin: 5% auto;
+    background-color: white;
+
+    width: 75%;
+    height: 400px;
+}
+
+h1{
+    font-size: 30px;
+    margin: 0 0 20px 0;
+    padding-left: 40px;
+    font-weight: lighter;
+    text-align: left;
+    padding-top: 20px;
+}
+
+/*.form-row {
+    margin-bottom: 40px;
+}*/
+
+.form-row label {
+    text-align: left;
+}
+
+input[type='text'], input[type="password"], input[type="email"] {
+    /*background-color: #FFFFFF;*/
+    display: block;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    outline: none;
+    width: 100%;
+    padding: 4px;
+}
+
+/*.form-row input[type="email"] {
+    border: 1px solid #D6D9DC;
+    border-radius: 3px;
+    width: 100%;
+    padding: 7px;
+}*/
+
+.left-box {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    height: auto;
+    width: 50%;
+}
+.right-box{
+    font-family: "Open Sans";
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 40px;
+    padding-top: 100px;
+    height: auto;
+    width: 50%;
+}
+
+.or {
+    position: absolute;
+    top: 40%;
+    right: 45%;
+    width: 40px;
+    height: 40px;
+    background: gainsboro;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+}
+
+.right-box .sing-in-with {
+    display: block;
+    margin-bottom: 40px;
+}
+
+.sing-in-with button {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 36px;
+    border: none;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-family: "Open Sans";
+    font-size: 15px;
+}
+
+.facebook {
+    background-color: #407FC7;
+}
+
+.twitter {
+    background: blue;
+}
+
+.gmail {
+    background: red;
+}
+
