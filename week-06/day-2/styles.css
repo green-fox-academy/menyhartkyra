@@ -1,0 +1,30 @@
+table {
+    border: 30px solid cornflowerblue;
+    border-collapse: collapse;
+    font-family: sans-serif;
+}
+
+thead{
+    border: 2px solid gray;
+    font-size: large;
+}
+
+th {
+    background-color: black;
+    color: azure;
+    padding: 20px;
+    text-align: left;
+    font-weight: normal;
+    border: 1px solid gray;
+}
+
+td{
+    border: 1px solid gray;
+    padding: 20px 150px 20px 20px;
+    text-align: left;
+    color: dimgrey;
+}
+
+tr:nth-child(odd) {
+    background-color: gainsboro;
+}

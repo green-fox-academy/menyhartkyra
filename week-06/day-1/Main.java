@@ -24,10 +24,10 @@ public class Main {
 
     //exercise 3
     List<Integer> numbers3 = Arrays.asList(3, 9, 2, 8, 6, 5);
-//    Map<Integer, Integer> map = numbers3.stream()
-//        .collect(Collectors.toMap(
-//            number -> number,
-//            number -> number*number));
+    //Map<Integer, Integer> map = numbers3.stream()
+    //    .collect(Collectors.toMap(
+    //        number -> number,
+    //        number -> number*number));
     //IntSummaryStatistics stats = map.values().stream().mapToInt((number) -> number).summaryStatistics();
     List<Integer> numbersSqaredBiggerThan20 =
         numbers3.stream().filter(number -> number * number > 20).collect(Collectors.toList());
@@ -45,6 +45,5 @@ public class Main {
     Stream<Character> characterStream = s.chars()
         .mapToObj(c -> (char) c);
     characterStream.filter(Character::isUpperCase).forEach(System.out::print);
-
   }
 }
