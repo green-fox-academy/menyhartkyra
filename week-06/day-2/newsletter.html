@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Newsletter</title>
-    <link rel="stylesheet" type="text/css" href="loginform.css">
 </head>
 <body>
-
+<form action="https://newsletter-ws.herokuapp.com/signup" method="POST">
+    <div class="form-row">
+        <label for='name'>NAME</label>
+        <input id='name' name='name' type='text' autofocus required minlength="1" maxlength="32"/>
+    </div>
+    <div class="form-row">
+        <label for='email'>EMAIL</label>
+        <input id='email' name='email' type="email"/>
+    </div>
+    <div class='form-row'>
+        <button>Submit</button>
+    </div>
+</form>
 </body>
 </html>
