@@ -8,11 +8,11 @@
 <header>
     <h1>My shop</h1>
 </header>
-<a href="/onlyavailable">ONLY AVAILABLE</a>
-<a href="/cheapestfirst">CHEAPEST FIRST</a>
-<a href="/containsnike">CONTAINS NIKE</a>
-<a href="/averagestock">AVERAGE STOCK</a>
-<a href="/mostexpensiveavailable">MOST EXPENSIVE AVAILABLE</a>
+<a href="/only-available">ONLY AVAILABLE</a>
+<a href="/cheapest-first">CHEAPEST FIRST</a>
+<a href="/contains-nike">CONTAINS NIKE</a>
+<a href="/average-stock">AVERAGE STOCK</a>
+<a href="/most-expensive-available">MOST EXPENSIVE AVAILABLE</a>
 <br>
 <table>
     <thead>
@@ -27,7 +27,7 @@
     <tr th:each="item : ${items}">
         <td th:text="${item.name}"></td>
         <td th:text="${item.description}"></td>
-        <td th:text="${item.price}"></td>
+        <td th:text="${item.price} + ' Ft'"></td>
         <td th:text="${item.quantityOfStock}"></td>
     </tr>
     </tbody>

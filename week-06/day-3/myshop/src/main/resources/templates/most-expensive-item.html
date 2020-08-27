@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Most expensive item</title>
+</head>
+<body>
+<header>
+    <h1>My shop</h1>
+</header>
+<a href="/only-available">ONLY AVAILABLE</a>
+<a href="/cheapest-first">CHEAPEST FIRST</a>
+<a href="/contains-nike">CONTAINS NIKE</a>
+<a href="/average-stock">AVERAGE STOCK</a>
+<a href="/most-expensive-available">MOST EXPENSIVE AVAILABLE</a>
+<br>
+<h4 th:text="'Most expensive item: ' + ${mostExpensiveItem}"></h4>
+</body>
+</html>

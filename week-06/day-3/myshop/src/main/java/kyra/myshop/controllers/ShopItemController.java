@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ShopItemController {
   List<ShopItem> items;
 
+  public List<ShopItem> getItems() {
+    return items;
+  }
+
   public ShopItemController() {
     items = new ArrayList<>();
     items.add(new ShopItem("Running shoes", "Nike running shoes for everyday sport", 1000, 5));
@@ -30,7 +34,7 @@ public class ShopItemController {
     return "shop";
   }
 
-  @GetMapping("/onlyavailable")
+  @GetMapping("/only-available")
   public String getOnlyAvailableItems(Model model) {
     List<ShopItem> onlyAvailableItems =
         items.stream().filter(shopItem -> shopItem.getQuantityOfStock() > 0).collect(
@@ -39,7 +43,7 @@ public class ShopItemController {
     return "shop";
   }
 
-  @GetMapping("/cheapestfirst")
+  @GetMapping("/cheapest-first")
   public String getCheapestFirst(Model model) {
     List<ShopItem> cheapestFirstItems =
         items.stream().sorted(Comparator.comparingInt(ShopItem::getPrice)).collect(
@@ -48,10 +52,24 @@ public class ShopItemController {
     return "shop";
   }
 
-  @GetMapping("/containsnike")
+  @GetMapping("/contains-nike")
   public String getNikeItems(Model model) {
     model.addAttribute("items", items.stream()
         .filter(item -> item.getDescription().contains("Nike")).collect(Collectors.toList()));
     return "shop";
+  }
+
+  @GetMapping("/average-stock")
+  public String getAverageStock(Model model) {
+    model.addAttribute("averageStock",
+        items.stream().mapToInt(ShopItem::getQuantityOfStock).average().getAsDouble());
+    return "average-stock";
+  }
+
+  @GetMapping("/most-expensive-available")
+  public String getMostExpensiveItem(Model model) {
+    model.addAttribute("mostExpensiveItem",
+        items.stream().max(Comparator.comparingInt(ShopItem::getPrice)).get().getName());
+    return "most-expensive-item";
   }
 }
