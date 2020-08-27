@@ -16,7 +16,7 @@ public class HelloRESTController {
 
   @RequestMapping(path = "/greeting")
   public Greeting greeting(@RequestParam String name) {
-    return new Greeting(id.incrementAndGet(),"Hello, " + name);
+    return new Greeting(id.incrementAndGet(), "Hello, " + name);
   }
 }
 

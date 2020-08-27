@@ -8,4 +8,12 @@ public class Greeting {
     this.greetCount = greetCount;
     this.content = content;
   }
+
+  public long getGreetCount() {
+    return greetCount;
+  }
+
+  public String getContent() {
+    return content;
+  }
 }

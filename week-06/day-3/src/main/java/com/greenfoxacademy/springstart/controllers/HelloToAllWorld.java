@@ -26,8 +26,8 @@ public class HelloToAllWorld {
                          Model model) {
     model.addAttribute("color", newColor);
     model.addAttribute("fontsize", newFontsize);
-    String someHello = hellos[generateRandomNumberBetween(0,hellos.length-1)];
-    model.addAttribute("hello",someHello);
+    String someHello = hellos[generateRandomNumberBetween(0, hellos.length - 1)];
+    model.addAttribute("hello", someHello);
     return "greetingtoall";
   }
 
