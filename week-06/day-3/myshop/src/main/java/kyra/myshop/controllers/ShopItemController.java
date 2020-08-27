@@ -47,4 +47,11 @@ public class ShopItemController {
     model.addAttribute("items", cheapestFirstItems);
     return "shop";
   }
+
+  @GetMapping("/containsnike")
+  public String getNikeItems(Model model) {
+    model.addAttribute("items", items.stream()
+        .filter(item -> item.getDescription().contains("Nike")).collect(Collectors.toList()));
+    return "shop";
+  }
 }
