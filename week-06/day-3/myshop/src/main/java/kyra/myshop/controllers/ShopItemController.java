@@ -1,5 +1,8 @@
 package kyra.myshop.controllers;
 
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -8,6 +11,9 @@ import kyra.myshop.models.ShopItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ShopItemController {
@@ -70,5 +76,12 @@ public class ShopItemController {
     model.addAttribute("info", "Most expensive item: " + 
         items.stream().max(Comparator.comparingInt(ShopItem::getPrice)).get().getName());
     return "info";
+  }
+
+  @RequestMapping(value = "/search", method = POST)
+  public String search(Model model,@RequestParam String search) {
+    model.addAttribute("items", items.stream()
+        .filter(item -> item.getDescription().contains(search)).collect(Collectors.toList()));
+    return "shop";
   }
 }

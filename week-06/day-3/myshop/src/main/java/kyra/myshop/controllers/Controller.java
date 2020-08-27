@@ -14,8 +14,8 @@ public class Controller {
     return "shop";
   }
 
-  @RequestMapping(value = "/search", method = POST)
+  /*@RequestMapping(value = "/search", method = POST)
   public String search(){
     return "redirect:";
-  }
+  }*/
 }
