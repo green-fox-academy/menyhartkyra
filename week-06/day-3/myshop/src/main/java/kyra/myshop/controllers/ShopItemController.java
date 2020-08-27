@@ -8,7 +8,6 @@ import kyra.myshop.models.ShopItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ShopItemController {
@@ -61,15 +60,15 @@ public class ShopItemController {
 
   @GetMapping("/average-stock")
   public String getAverageStock(Model model) {
-    model.addAttribute("averageStock",
+    model.addAttribute("info", "Average stock: " +
         items.stream().mapToInt(ShopItem::getQuantityOfStock).average().getAsDouble());
-    return "average-stock";
+    return "info";
   }
 
   @GetMapping("/most-expensive-available")
   public String getMostExpensiveItem(Model model) {
-    model.addAttribute("mostExpensiveItem",
+    model.addAttribute("info", "Most expensive item: " + 
         items.stream().max(Comparator.comparingInt(ShopItem::getPrice)).get().getName());
-    return "most-expensive-item";
+    return "info";
   }
 }
