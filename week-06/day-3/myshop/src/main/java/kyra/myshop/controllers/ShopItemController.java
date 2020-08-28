@@ -11,17 +11,11 @@ import kyra.myshop.models.ShopItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ShopItemController {
-  List<ShopItem> items;
-
-  public List<ShopItem> getItems() {
-    return items;
-  }
+  private List<ShopItem> items;
 
   public ShopItemController() {
     items = new ArrayList<>();
@@ -41,19 +35,19 @@ public class ShopItemController {
 
   @GetMapping("/only-available")
   public String getOnlyAvailableItems(Model model) {
-    List<ShopItem> onlyAvailableItems =
+    List<ShopItem> availableItems =
         items.stream().filter(shopItem -> shopItem.getQuantityOfStock() > 0).collect(
             Collectors.toList());
-    model.addAttribute("items", onlyAvailableItems);
+    model.addAttribute("items", availableItems);
     return "shop";
   }
 
   @GetMapping("/cheapest-first")
   public String getCheapestFirst(Model model) {
-    List<ShopItem> cheapestFirstItems =
+    List<ShopItem> cheapestItemsFirst =
         items.stream().sorted(Comparator.comparingInt(ShopItem::getPrice)).collect(
             Collectors.toList());
-    model.addAttribute("items", cheapestFirstItems);
+    model.addAttribute("items", cheapestItemsFirst);
     return "shop";
   }
 
@@ -67,7 +61,7 @@ public class ShopItemController {
   @GetMapping("/average-stock")
   public String getAverageStock(Model model) {
     model.addAttribute("info", "Average stock: " +
-        items.stream().mapToInt(ShopItem::getQuantityOfStock).average().getAsDouble());
+        items.stream().mapToInt(ShopItem::getQuantityOfStock).average().orElse(0));
     return "info";
   }
 
@@ -79,7 +73,7 @@ public class ShopItemController {
   }
 
   @RequestMapping(value = "/search", method = POST)
-  public String search(Model model,@RequestParam String search) {
+  public String search(Model model, String search) {
     model.addAttribute("items", items.stream()
         .filter(item -> item.getDescription().contains(search)).collect(Collectors.toList()));
     return "shop";

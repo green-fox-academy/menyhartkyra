@@ -1,0 +1,64 @@
+body {
+    font-family: 'Barlow', sans-serif;
+    width: 70%;
+    margin-left: 15%;
+}
+
+h1 {
+    color: lightskyblue;
+    border-bottom: 3px solid;
+    font-weight: bold;
+}
+
+.headerbuttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+button, a {
+    padding: 8px 10px 8px 10px;
+    color: white;
+    background-color: crimson;
+    border-radius: 4px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+button {
+    border: none;
+    margin-left: 5px;
+}
+
+.searchlabel {
+    color: crimson;
+    font-size: smaller;
+    font-weight: bold;
+}
+
+#search {
+    height: available;
+    padding: 7px 10px 6px 10px;
+}
+
+th{
+    background-color: aquamarine;
+    padding: 10px;
+    text-align-all: center;
+}
+
+.description {
+    font-size: smaller;
+}
+
+.price {
+    font-size: larger;
+    text-align: center;
+}
+
+.stock {
+    text-align: center;
+}
+
+td {
+    padding: 3px 9px 3px 9px;
+}

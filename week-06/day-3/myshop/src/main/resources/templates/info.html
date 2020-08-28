@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Most expensive item</title>
+    <link rel="stylesheet" href="../static/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -15,9 +17,9 @@
 <a href="/most-expensive-available">MOST EXPENSIVE AVAILABLE</a>
 <br>
 <form method="post" action="/search">
-    <label for="search">Search for:</label>
-        <input id="search" name="search" type="search" placeholder="something like Nike">
-
+    <label for="search" class="searchlabel">Search for:</label>
+    <br>
+    <input id="search" name="search" type="search" placeholder="something like Nike">
     <button>Search</button>
 </form>
 <h4 th:text="${info}"></h4>
