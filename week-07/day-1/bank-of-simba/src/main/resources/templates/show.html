@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Thymeleaf Exercise #</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}"/>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<p th:text="'Accountowner: ' + ${name} + ' Amount: ' + ${#numbers.formatDecimal(balance,0,2)} + ' Animaltype: ' + ${animalType}"></p>
+<p th:text="|Accountowner:  ${name}  Amount:  ${balance}  Animaltype: ${animalType}|"></p>
+<p th:text="|Accountowner: ${name}|"></p>
+<p class="balance" th:text="|Amount: ${#numbers.formatDecimal(balance,0,2)}|"></p>
+<p th:text="|Animaltype: ${animalType}|"></p>
+
+<p th:text="${htmlstring}" >valami</p>
+<p th:utext="${htmlstring}"></p>
+</body>
+</html>
