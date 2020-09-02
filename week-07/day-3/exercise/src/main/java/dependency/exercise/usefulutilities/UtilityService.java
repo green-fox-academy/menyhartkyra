@@ -42,6 +42,18 @@ public class UtilityService {
     }
     return result;
   }
+
+  public String validateEmail(String email){
+    boolean valid = false;
+    if (email.contains("@") && email.contains(".")) {
+      valid = true;
+    }
+    if (valid){
+      return email + " is a valid email address";
+    } else {
+      return email + " is not a valid email address";
+    }
+  }
 }
 
 // ## Colored Background
