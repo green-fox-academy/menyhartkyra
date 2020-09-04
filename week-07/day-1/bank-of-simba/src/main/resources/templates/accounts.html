@@ -27,5 +27,15 @@
         <td th:unless="*{name == 'Scar'}">Good guy</td>
     </tr>
 </table>
+
+<form th:action="@{/raise-balance}" method="post">
+    <select name="accountId">
+        <option th:each="account : ${accounts}"
+                th:text="${account.name}"
+                th:value="${accountStat.index}">
+        </option>
+    </select>
+    <button type="submit">Raise balance</button>
+</form>
 </body>
 </html>

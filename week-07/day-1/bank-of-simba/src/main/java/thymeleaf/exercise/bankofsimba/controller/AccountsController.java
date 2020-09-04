@@ -38,4 +38,15 @@ public class AccountsController {
     model.addAttribute("htmlstring", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
     return "show";
   }
+
+  @RequestMapping(path = "/raise-balance")
+  public String raiseBalance(Integer accountId){
+    BankAccount account = accountService.getAllAccounts().get(accountId);
+    if (account.isKing()){
+      account.setBalance(account.getBalance()+100);
+    } else {
+      account.setBalance(account.getBalance()+10);
+    }
+    return "redirect:/accounts";
+  }
 }
