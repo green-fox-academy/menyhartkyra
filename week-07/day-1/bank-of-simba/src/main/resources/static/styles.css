@@ -7,3 +7,39 @@ p {
 p.balance::after {
     content: " Zebra";
 }
+
+table {
+    border: 30px solid cornflowerblue;
+    border-collapse: collapse;
+    font-family: sans-serif;
+}
+
+thead{
+    border: 2px solid gray;
+    font-size: large;
+}
+
+th {
+    background-color: black;
+    color: azure;
+    padding: 20px;
+    text-align: left;
+    font-weight: normal;
+    border: 1px solid gray;
+}
+
+td{
+    border: 1px solid gray;
+    padding: 20px 20px 20px 20px;
+    text-align: left;
+    color: dimgrey;
+}
+
+#true td{
+font-size: larger;
+    color: crimson;
+    font-family: "Abyssinica SIL";
+}
+
+
+

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Accounts</title>
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
 <H3>Accounts in Bank of Simba:</H3>
@@ -12,12 +13,14 @@
         <th>Balance</th>
         <th>Animaltype</th>
         <th>Index</th>
+        <th>Is King?</th>
     </tr>
-    <tr th:each="account : ${accounts}" th:object="${account}">
+    <tr  th:each="account : ${accounts}" th:object="${account}" th:id="${account.isKing()}">
         <td th:text="*{name}"></td>
         <td th:text="*{balance}"></td>
         <td th:text="*{animaltype}"></td>
         <td th:text="${accountStat.index}"></td>
+        <td th:text="*{isKing()} ? 'yes' : 'no'">
 </table>
 </body>
 </html>

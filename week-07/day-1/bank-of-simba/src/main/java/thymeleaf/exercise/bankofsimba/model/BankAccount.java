@@ -4,11 +4,13 @@ public class BankAccount {
   String name;
   int balance;
   String animaltype;
+  private boolean isKing;
 
-  public BankAccount(String name, int balance, String animaltype) {
+  public BankAccount(String name, int balance, String animaltype, boolean isKing) {
     this.name = name;
     this.balance = balance;
     this.animaltype = animaltype;
+    this.isKing = isKing;
   }
 
   //region getters setters
@@ -22,6 +24,10 @@ public class BankAccount {
 
   public String getAnimaltype() {
     return animaltype;
+  }
+
+  public boolean isKing() {
+    return isKing;
   }
   //endregion
 }
