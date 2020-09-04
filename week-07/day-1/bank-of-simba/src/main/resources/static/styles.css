@@ -9,7 +9,6 @@ p.balance::after {
 }
 
 table {
-    border: 30px solid cornflowerblue;
     border-collapse: collapse;
     font-family: sans-serif;
 }
