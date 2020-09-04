@@ -11,8 +11,8 @@ public class AccountRepo {
 
   public AccountRepo(){
     accounts = new ArrayList<>();
-    accounts.add(new BankAccount("Simba", 2000, "lion", false));
-    accounts.add(new BankAccount("Scar",5000,"lion", true));
+    accounts.add(new BankAccount("Simba", 2000, "lion", true));
+    accounts.add(new BankAccount("Scar",5000,"lion", false));
     accounts.add(new BankAccount("Mufasa", 8000,"lion", false));
     accounts.add(new BankAccount("Timon",10000,"meerkat",false));
   }
