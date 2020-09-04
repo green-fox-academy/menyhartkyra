@@ -10,15 +10,16 @@ import thymeleaf.exercise.bankofsimba.model.BankAccount;
 @Controller
 public class AccountsController {
   List<BankAccount> accounts;
+  BankAccount account1;
 
   public AccountsController() {
     accounts = new ArrayList<>();
+    account1 = new BankAccount("Simba", 2000, "lion");
+    accounts.add(account1);
   }
 
   @RequestMapping(path = "/show", method = RequestMethod.GET)
   public String showAccount(Model model) {
-    BankAccount account1 = new BankAccount("Simba", 2000, "lion");
-    accounts.add(account1);
     model.addAttribute("name", account1.getName());
     model.addAttribute("balance", account1.getBalance());
     model.addAttribute("animalType", account1.getAnimaltype());
