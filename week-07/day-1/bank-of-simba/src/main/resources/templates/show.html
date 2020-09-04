@@ -14,5 +14,18 @@
 
 <p th:text="${htmlstring}" >valami</p>
 <p th:utext="${htmlstring}"></p>
+
+<H3>Products:</H3>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>Animaltype</th>
+    </tr>
+    <tr th:each="account : ${accounts}" th:object="${account}">
+        <td th:text="*{name}"></td>
+        <td th:text="*{balance}"></td>
+        <td th:text="*{animaltype}"></td>
+</table>
 </body>
 </html>

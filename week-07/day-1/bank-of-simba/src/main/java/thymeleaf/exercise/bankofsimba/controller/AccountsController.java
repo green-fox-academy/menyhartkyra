@@ -2,27 +2,29 @@ package thymeleaf.exercise.bankofsimba.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import thymeleaf.exercise.bankofsimba.model.BankAccount;
+import thymeleaf.exercise.bankofsimba.service.AccountService;
 
 @Controller
 public class AccountsController {
-  List<BankAccount> accounts;
-  BankAccount account1;
+  private AccountService accountService;
 
-  public AccountsController() {
-    accounts = new ArrayList<>();
-    account1 = new BankAccount("Simba", 2000, "lion");
-    accounts.add(account1);
+  @Autowired
+  public AccountsController(AccountService accountService) {
+    this.accountService = accountService;
   }
 
   @RequestMapping(path = "/show", method = RequestMethod.GET)
   public String showAccount(Model model) {
-    model.addAttribute("name", account1.getName());
-    model.addAttribute("balance", account1.getBalance());
-    model.addAttribute("animalType", account1.getAnimaltype());
+    BankAccount account1 = accountService.getAllAccounts().get(0);
+    model.addAttribute("accounts", accountService.getAllAccounts());
+    model.addAttribute("name",account1.getName());
+    model.addAttribute("balance",account1.getBalance());
+    model.addAttribute("animalType",account1.getAnimaltype());
     return "show";
   }
 
