@@ -16,18 +16,16 @@
         <th>Is King?</th>
         <th>What guy</th>
     </tr>
-    <tr th:switch="${account.name}" th:each="account : ${accounts}" th:object="${account}" th:id="${account.isKing()}">
+    <tr th:each="account : ${accounts}" th:object="${account}" th:class="${account.isKing()}? 'king'">
         <td th:text="*{name}"></td>
         <td th:text="*{balance}"></td>
         <td th:text="*{animaltype}"></td>
         <td th:text="${accountStat.index}"></td>
         <td th:text="*{isKing()} ? 'yes' : 'no'">
 
-        <td th:case="'Simba'">Good guy</td>
-        <td th:case="'Mufasa'">Good guy</td>
-        <td th:case="'Timon'">Good guy</td>
-        <td th:case="'Scar'">Also good guy</td>
-
+        <td th:if="*{name == 'Scar'}">Also good guy</td>
+        <td th:unless="*{name == 'Scar'}">Good guy</td>
+    </tr>
 </table>
 </body>
 </html>

@@ -35,7 +35,7 @@ td{
     color: dimgrey;
 }
 
-#true td{
+.king td{
 font-size: larger;
     color: crimson;
     font-family: "Abyssinica SIL";
