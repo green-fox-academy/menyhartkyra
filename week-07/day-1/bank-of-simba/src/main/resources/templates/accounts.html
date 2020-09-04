@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accounts</title>
+</head>
+<body>
+<H3>Accounts in Bank of Simba:</H3>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>Animaltype</th>
+        <th>Index</th>
+    </tr>
+    <tr th:each="account : ${accounts}" th:object="${account}">
+        <td th:text="*{name}"></td>
+        <td th:text="*{balance}"></td>
+        <td th:text="*{animaltype}"></td>
+        <td th:text="${accountStat.index}"></td>
+</table>
+</body>
+</html>

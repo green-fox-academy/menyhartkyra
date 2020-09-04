@@ -21,11 +21,16 @@ public class AccountsController {
   @RequestMapping(path = "/show", method = RequestMethod.GET)
   public String showAccount(Model model) {
     BankAccount account1 = accountService.getAllAccounts().get(0);
-    model.addAttribute("accounts", accountService.getAllAccounts());
     model.addAttribute("name",account1.getName());
     model.addAttribute("balance",account1.getBalance());
     model.addAttribute("animalType",account1.getAnimaltype());
     return "show";
+  }
+
+  @RequestMapping(path = "/accounts", method = RequestMethod.GET)
+  public String showAccounts(Model model){
+    model.addAttribute("accounts", accountService.getAllAccounts());
+    return "accounts";
   }
 
   @RequestMapping(path = "/htmlception")
