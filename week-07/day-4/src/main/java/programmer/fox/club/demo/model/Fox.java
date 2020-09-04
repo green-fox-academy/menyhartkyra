@@ -10,7 +10,10 @@ public class Fox {
   private Drink drink;
 
   public Fox(String name) {
+    this.food = new Food("rabbit");
+    this.drink = new Drink("tea");
     this.name = name;
+    tricks = new ArrayList<>();
   }
 
   public List<String> getTricks() {

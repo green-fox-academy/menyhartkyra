@@ -11,12 +11,15 @@
 <img src="greenfox.png" alt="green fox logo">
 <br>
 <a href="/login">Login</a>
-<p th:text="|This is ${petName}. Currently living on pizza and lemonade. He knows 2 tricks.|"></p>
+<p th:text="|This is ${pet.name}. Currently living on ${pet.food} and ${pet.drink}. He knows ${pet.getTricks().size()} tricks.|"></p>
 <h2>Known tricks</h2>
-<ul>
-    <li>write HTML</li>
-    <li>code in Java</li>
-</ul>
-<p th:text="|${petName}|"></p>
+<p th:if="${pet.getTricks().size() == 0}">I don't know any.</p>
+<div th:unless="${pet.getTricks().size() == 0}">
+    <ul>
+        <li>write HTML</li>
+        <li>code in Java</li>
+    </ul>
+</div>
+<p th:text="|${pet.name}|"></p>
 </body>
 </html>
