@@ -1,0 +1,9 @@
+.completed{
+    text-decoration: line-through;
+}
+
+
+.new-task-label{
+    font-size: larger;
+    display: block;
+}
