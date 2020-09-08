@@ -55,4 +55,10 @@ public class TodoController {
     taskRepository.save(new Todo(newTaskName, urgent, done));
     return "redirect:/";
   }
+
+  @RequestMapping(value = "/remove", method = RequestMethod.POST)
+  public String removeTask(long taskIndexToRemove){
+    taskRepository.deleteById(taskIndexToRemove);
+    return "redirect:/";
+  }
 }
