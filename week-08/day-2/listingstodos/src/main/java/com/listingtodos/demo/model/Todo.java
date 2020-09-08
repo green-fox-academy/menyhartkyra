@@ -25,6 +25,12 @@ public class Todo {
     urgent = false;
   }
 
+  public Todo(String title, boolean urgent, boolean done) {
+    this.title = title;
+    this.done = done;
+    this.urgent = urgent;
+  }
+
   //region getters setters
   public String getTitle() {
     return title;
