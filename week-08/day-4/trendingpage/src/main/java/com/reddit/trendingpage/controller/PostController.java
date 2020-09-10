@@ -16,7 +16,7 @@ public class PostController {
 
   @RequestMapping(path = "/")
   public String renderMainPage(Model model){
-    model.addAttribute("posts",postService.getFirst10Post());
+    model.addAttribute("posts",postService.getPosts());
     return "mainpage";
   }
 
