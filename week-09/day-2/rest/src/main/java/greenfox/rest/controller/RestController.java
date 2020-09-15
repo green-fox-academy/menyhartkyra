@@ -6,6 +6,8 @@ import greenfox.rest.models.Error;
 import greenfox.rest.models.Greeting;
 import greenfox.rest.models.Number;
 import greenfox.rest.models.UntilNumber;
+import greenfox.rest.service.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
+  private Service service;
+
+  @Autowired
+  public RestController(Service service) {
+    this.service = service;
+  }
 
   @RequestMapping(path = "/doubling", method = RequestMethod.GET)
   public Object doubleNumber(@RequestParam(required = false) Integer input) {
@@ -51,6 +59,6 @@ public class RestController {
 
   @RequestMapping(path = "/dountil/{action}", method = RequestMethod.POST)
   public Object doUntil(@PathVariable String action, @RequestBody UntilNumber until){
-    return new DoUntil(action, until);
+    return service.calculateResult(action,until);
   }
 }

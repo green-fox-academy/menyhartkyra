@@ -1,17 +1,21 @@
 package greenfox.rest.service;
 
+import greenfox.rest.models.DoUntil;
 import greenfox.rest.models.UntilNumber;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @org.springframework.stereotype.Service
 public class Service {
 
-  public int calculateResult(String action, UntilNumber untilNumber) {
+  public DoUntil calculateResult(String action, UntilNumber untilNumber) {
     int until = untilNumber.getUntil();
+    DoUntil doUntil = new DoUntil();
     if (action.equals("sum")) {
-      return sum(until);
+      doUntil.setResult(sum(until));
     } else {
-      return factor(until);
+      doUntil.setResult(factor(until));
     }
+    return doUntil;
   }
 
   private int sum(int until) {
