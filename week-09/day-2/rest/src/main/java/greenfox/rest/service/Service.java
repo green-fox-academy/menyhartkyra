@@ -1,21 +1,21 @@
 package greenfox.rest.service;
 
+import greenfox.rest.models.ArrayExercise;
+import greenfox.rest.models.ArrayResult;
 import greenfox.rest.models.DoUntil;
+import greenfox.rest.models.Error;
 import greenfox.rest.models.UntilNumber;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @org.springframework.stereotype.Service
 public class Service {
 
   public DoUntil calculateResult(String action, UntilNumber untilNumber) {
     int until = untilNumber.getUntil();
-    DoUntil doUntil = new DoUntil();
     if (action.equals("sum")) {
-      doUntil.setResult(sum(until));
+      return new DoUntil(sum(until));
     } else {
-      doUntil.setResult(factor(until));
+      return new DoUntil(factor(until));
     }
-    return doUntil;
   }
 
   private int sum(int until) {
@@ -32,5 +32,41 @@ public class Service {
       result *= i;
     }
     return result;
+  }
+
+  public Object calculateArray(ArrayExercise arrayExercise){
+    if (arrayExercise.getWhat() == null || arrayExercise.getNumbers() == null){
+      return new Error("what to do with the numbers");
+    }
+    if (arrayExercise.getWhat().equals("sum")){
+      return calculateArraySum(arrayExercise.getNumbers());
+    } else if (arrayExercise.getWhat().equals("multiply")){
+      return calculateArrayFactor(arrayExercise.getNumbers());
+    } else {
+      return calculateDoubleArray(arrayExercise.getNumbers());
+    }
+  }
+
+  private ArrayResult calculateDoubleArray(int[] array){
+    for (int i = 0; i< array.length; i++) {
+      array[i] *=2;
+    }
+    return new ArrayResult(array);
+  }
+
+  private DoUntil calculateArraySum(int[] array){
+    int result = 0;
+    for (int number : array) {
+      result += number;
+    }
+    return new DoUntil(result);
+  }
+
+  private DoUntil calculateArrayFactor(int[] array){
+    int result = 1;
+    for (int number : array) {
+      result *= number;
+    }
+    return new DoUntil(result);
   }
 }

@@ -1,6 +1,7 @@
 package greenfox.rest.controller;
 
 import greenfox.rest.models.AppendA;
+import greenfox.rest.models.ArrayExercise;
 import greenfox.rest.models.DoUntil;
 import greenfox.rest.models.Error;
 import greenfox.rest.models.Greeting;
@@ -58,7 +59,12 @@ public class RestController {
   }
 
   @RequestMapping(path = "/dountil/{action}", method = RequestMethod.POST)
-  public Object doUntil(@PathVariable String action, @RequestBody UntilNumber until){
+  public DoUntil doUntil(@PathVariable String action, @RequestBody UntilNumber until){
     return service.calculateResult(action,until);
+  }
+
+  @RequestMapping(path = "/arrays", method = RequestMethod.POST)
+  public Object doSthWithArray(@RequestBody ArrayExercise arrayExercise){
+    return service.calculateArray(arrayExercise);
   }
 }

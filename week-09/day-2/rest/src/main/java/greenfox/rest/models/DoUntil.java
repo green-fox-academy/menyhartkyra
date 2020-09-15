@@ -9,4 +9,8 @@ import org.springframework.stereotype.Repository;
 @Setter
 public class DoUntil {
   private int result;
+
+  public DoUntil(int result) {
+    this.result = result;
+  }
 }
