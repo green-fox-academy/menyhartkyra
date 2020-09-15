@@ -3,6 +3,8 @@ package greenfox.rest.controller;
 import greenfox.rest.models.Error;
 import greenfox.rest.models.Greeting;
 import greenfox.rest.models.Number;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,12 +25,14 @@ public class RestController {
 //    return new NoInputError();
 //  }
 
-  @RequestMapping(path = "/greeting", method = RequestMethod.GET)
-  public Object greet(@RequestParam(required = false) String name,
-                      @RequestParam(required = false) String title) {
-    if (name == null || title == null) {
-      return new Error("a name and a title");
+  @RequestMapping(path = "/greeter", method = RequestMethod.GET)
+  public ResponseEntity greet(@RequestParam(required = false) String name,
+                              @RequestParam(required = false) String title) {
+    if (name == null && title == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("a name and a title"));
+    } else if (title == null) {
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("a title"));
     }
-    return new Greeting(name, title);
+    return ResponseEntity.status(HttpStatus.OK).body(new Greeting(name, title));
   }
 }
