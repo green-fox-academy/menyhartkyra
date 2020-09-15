@@ -1,12 +1,18 @@
 package greenfox.rest.controller;
 
 import greenfox.rest.models.AppendA;
+import greenfox.rest.models.DoUntil;
 import greenfox.rest.models.Error;
 import greenfox.rest.models.Greeting;
 import greenfox.rest.models.Number;
+import greenfox.rest.models.UntilNumber;
+import org.springframework.http.HttpMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,10 +28,10 @@ public class RestController {
     return new Number(input);
   }
 
-//  @ExceptionHandler(MissingServletRequestParameterException.class)
-//  public NoInputError handleMyException(Exception  exception) {
-//    return new NoInputError();
-//  }
+  @ExceptionHandler(HttpMessageNotReadableException.class)
+  public Error handleMyException(Exception  exception) {
+    return new Error("a number");
+  }
 
   @RequestMapping(path = "/greeter", method = RequestMethod.GET)
   public ResponseEntity<?> greet(@RequestParam(required = false) String name,
@@ -41,5 +47,10 @@ public class RestController {
   @RequestMapping(path = "/appenda/{appendable}", method = RequestMethod.GET)
   public AppendA appendLetterA(@PathVariable String appendable){
     return new AppendA(appendable);
+  }
+
+  @RequestMapping(path = "/dountil/{action}", method = RequestMethod.POST)
+  public Object doUntil(@PathVariable String action, @RequestBody UntilNumber until){
+    return new DoUntil(action, until);
   }
 }
