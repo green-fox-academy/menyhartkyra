@@ -29,10 +29,10 @@ public class SithService {
   public List<String> separateSentences(Text text) {
     String allText = text.getText();
     String[] sentences = allText.split("\\. ");
-    for (int i = 0; i < sentences.length-1; i++) {
-      sentences[i] = sentences[i].concat(".");
-    }
-    return Arrays.asList(sentences.clone());
+    String sentence = sentences[sentences.length-1];
+    sentence = sentence.substring(0,sentence.length()-1);
+    sentences[sentences.length-1] = sentence;
+    return Arrays.asList(sentences);
   }
 
   public SithText changeWordSeq(List<String> sentences) {
@@ -58,12 +58,20 @@ public class SithService {
       if (evenWords.size() > oddWords.size()) {
         sithSentence = sithSentence.concat(evenWords.get(evenWords.size() - 1));
       }
-      c = Character.toUpperCase((sithSentence.charAt(0)));
-      String sentenceWithoutFirstChar = sithSentence.substring(1);
-      String sent = c.toString() + sentenceWithoutFirstChar;
-      sithText = sithText.concat(sent).concat(getRandomWord());
+      sithSentence = sithSentence.substring(0,sithSentence.length()-1);
+      sithSentence = changeFirstCharToUppercase(sithSentence) + ". ";
+      sithText = sithText.concat(sithSentence).concat(getRandomWord());
+      if (!sentence.equals(sentences.get(sentences.size() - 1))){
+        sithText = sithText.concat(" ");
+      }
     }
     return new SithText(sithText);
+  }
+
+  private String changeFirstCharToUppercase(String sithSentence) {
+    Character c = Character.toUpperCase((sithSentence.charAt(0)));
+    String sentenceWithoutFirstChar = sithSentence.substring(1);
+    return c.toString() + sentenceWithoutFirstChar;
   }
 
   public void addDeclarationPoint(String[] words) {
