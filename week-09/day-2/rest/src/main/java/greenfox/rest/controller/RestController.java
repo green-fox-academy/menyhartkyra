@@ -4,6 +4,7 @@ import greenfox.rest.models.AppendA;
 import greenfox.rest.models.ArrayExercise;
 import greenfox.rest.models.DoUntil;
 import greenfox.rest.models.Error;
+import greenfox.rest.models.ErrorMessage;
 import greenfox.rest.models.Greeting;
 import greenfox.rest.models.Log;
 import greenfox.rest.models.LogActivity;
@@ -88,7 +89,10 @@ public class RestController {
   }
 
   @RequestMapping(path = "/sith", method = RequestMethod.POST)
-  public SithText sithText(@RequestBody Text text){
+  public Object sithText(@RequestBody(required = false) Text text){
+    if (text == null){
+      return new ErrorMessage("Feed me some text you have to, padawan young you are. Hmmm.");
+    }
     return sithService.changeWordSequence(sithService.separateSentences(text));
   }
 }
