@@ -5,9 +5,19 @@ import greenfox.rest.models.ArrayResult;
 import greenfox.rest.models.DoUntil;
 import greenfox.rest.models.Error;
 import greenfox.rest.models.UntilNumber;
+import greenfox.rest.repository.LogRepository;
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @org.springframework.stereotype.Service
+@Getter
 public class Service {
+  private LogRepository logRepository;
+
+  @Autowired
+  public Service(LogRepository logRepository) {
+    this.logRepository = logRepository;
+  }
 
   public DoUntil calculateResult(String action, UntilNumber untilNumber) {
     int until = untilNumber.getUntil();
