@@ -1,19 +1,29 @@
 package greenfox.rest.service;
 
 import greenfox.rest.models.Log;
+import greenfox.rest.models.LogActivity;
 import greenfox.rest.repository.LogRepository;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
+import org.springframework.stereotype.Service;
 
 @Getter
+@Service
 public class LogService {
-  private List<Log> entries;
-  private int entry_count;
+  private LogRepository logRepository;
+
 
   public LogService(LogRepository logRepository) {
-    entries = new ArrayList<>();
-    logRepository.findAll().forEach(log -> entries.add(log));
-    entry_count = entries.size();
+    this.logRepository = logRepository;
+  }
+
+  public LogActivity getLogInfo(){
+    LogActivity logActivity = new LogActivity();
+    List<Log> entries = new ArrayList<>();
+    logRepository.findAll().forEach(entries::add);
+    logActivity.setEntries(entries);
+    logActivity.setEntry_count(entries.size());
+    return logActivity;
   }
 }

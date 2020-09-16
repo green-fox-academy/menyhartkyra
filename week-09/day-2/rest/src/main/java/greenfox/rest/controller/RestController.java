@@ -6,10 +6,14 @@ import greenfox.rest.models.DoUntil;
 import greenfox.rest.models.Error;
 import greenfox.rest.models.Greeting;
 import greenfox.rest.models.Log;
+import greenfox.rest.models.LogActivity;
 import greenfox.rest.models.Number;
+import greenfox.rest.models.SithText;
+import greenfox.rest.models.Text;
 import greenfox.rest.models.UntilNumber;
 import greenfox.rest.service.LogService;
 import greenfox.rest.service.Service;
+import greenfox.rest.service.SithService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +28,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
   private Service service;
+  private LogService logService;
+  private SithService sithService;
 
   @Autowired
-  public RestController(Service service) {
+  public RestController(Service service, LogService logService, SithService sithService) {
     this.service = service;
+    this.logService = logService;
+    this.sithService = sithService;
   }
 
   @RequestMapping(path = "/doubling", method = RequestMethod.GET)
@@ -75,7 +83,12 @@ public class RestController {
   }
 
   @RequestMapping(path = "/log", method = RequestMethod.GET)
-  public LogService getLog(){
-    return new LogService(service.getLogRepository());
+  public LogActivity getLog(){
+    return logService.getLogInfo();
+  }
+
+  @RequestMapping(path = "/sith", method = RequestMethod.POST)
+  public SithText sithText(@RequestBody Text text){
+    return sithService.changeWordSeq(sithService.separateSentences(text));
   }
 }

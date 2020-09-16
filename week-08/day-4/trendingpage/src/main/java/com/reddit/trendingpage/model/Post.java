@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -21,6 +22,7 @@ public class Post {
   private int id;
   private String title;
   private String url;
-  private int votes = 1;
-  private Date date = new Date();
+  private int votes;
+  @CreationTimestamp
+  private Date date;
 }

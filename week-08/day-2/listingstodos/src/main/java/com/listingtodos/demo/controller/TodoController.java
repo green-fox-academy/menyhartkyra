@@ -40,7 +40,6 @@ public class TodoController {
   @RequestMapping(value = "/add-new-task", method = RequestMethod.POST)
   public String addNewTask(String newTaskName, @RequestParam(required = false) boolean
       isTaskUrgent, @RequestParam(required = false) boolean isTaskDone) {
-
     taskRepository.save(new Todo(newTaskName, isTaskUrgent, isTaskDone));
     return "redirect:/";
   }
