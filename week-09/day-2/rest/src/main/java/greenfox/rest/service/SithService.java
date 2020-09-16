@@ -29,43 +29,50 @@ public class SithService {
   public List<String> separateSentences(Text text) {
     String allText = text.getText();
     String[] sentences = allText.split("\\. ");
-    String sentence = sentences[sentences.length-1];
-    sentence = sentence.substring(0,sentence.length()-1);
-    sentences[sentences.length-1] = sentence;
+    String sentence = sentences[sentences.length - 1];
+    sentence = sentence.substring(0, sentence.length() - 1);
+    sentences[sentences.length - 1] = sentence;
     return Arrays.asList(sentences);
   }
 
-  public SithText changeWordSeq(List<String> sentences) {
+  public SithText changeWordSequence(List<String> sentences) {
     String sithText = "";
     for (String sentence : sentences) {
       List<String> words = Arrays.asList(sentence.split(" ").clone());
-      Character c = Character.toLowerCase(words.get(0).charAt(0));
-      String wordWithoutFirstChar = words.get(0).substring(1);
-      String word = c.toString() + wordWithoutFirstChar;
-      words.set(0,word);
-      List<String> evenWords = new ArrayList<>();
-      List<String> oddWords = new ArrayList<>();
-      for (int i = 0; i < words.size(); i = i + 2) {
-        evenWords.add(words.get(i) + " ");
-      }
-      for (int i = 1; i < words.size(); i = i + 2) {
-        oddWords.add(words.get(i) + " ");
-      }
-      String sithSentence = "";
-      for (int i = 0; i < oddWords.size(); i++) {
-        sithSentence += oddWords.get(i).concat(evenWords.get(i));
-      }
-      if (evenWords.size() > oddWords.size()) {
-        sithSentence = sithSentence.concat(evenWords.get(evenWords.size() - 1));
-      }
-      sithSentence = sithSentence.substring(0,sithSentence.length()-1);
+      words.set(0, words.get(0).toLowerCase());
+      String sithSentence = createSithSequencedSentence(words);
+      sithSentence = removeSpaceFromEnd(sithSentence);
       sithSentence = changeFirstCharToUppercase(sithSentence) + ". ";
       sithText = sithText.concat(sithSentence).concat(getRandomWord());
-      if (!sentence.equals(sentences.get(sentences.size() - 1))){
+      if (!sentence.equals(sentences.get(sentences.size() - 1))) {
         sithText = sithText.concat(" ");
       }
     }
     return new SithText(sithText);
+  }
+
+  private String createSithSequencedSentence(List<String> words) {
+    List<String> evenWords = new ArrayList<>();
+    List<String> oddWords = new ArrayList<>();
+    for (int i = 0; i < words.size(); i = i + 2) {
+      evenWords.add(words.get(i) + " ");
+    }
+    for (int i = 1; i < words.size(); i = i + 2) {
+      oddWords.add(words.get(i) + " ");
+    }
+    String sithSentence = "";
+    for (int i = 0; i < oddWords.size(); i++) {
+      sithSentence += oddWords.get(i).concat(evenWords.get(i));
+    }
+    if (evenWords.size() > oddWords.size()) {
+      sithSentence = sithSentence.concat(evenWords.get(evenWords.size() - 1));
+    }
+    return sithSentence;
+  }
+
+  private String removeSpaceFromEnd(String str) {
+    str = str.substring(0, str.length() - 1);
+    return str;
   }
 
   private String changeFirstCharToUppercase(String sithSentence) {

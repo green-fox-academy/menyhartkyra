@@ -89,6 +89,6 @@ public class RestController {
 
   @RequestMapping(path = "/sith", method = RequestMethod.POST)
   public SithText sithText(@RequestBody Text text){
-    return sithService.changeWordSeq(sithService.separateSentences(text));
+    return sithService.changeWordSequence(sithService.separateSentences(text));
   }
 }
