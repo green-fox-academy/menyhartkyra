@@ -1,5 +1,9 @@
 package greenfox.rest.controller;
 
+import greenfox.rest.controller.exceptions.DoublingException;
+import greenfox.rest.controller.exceptions.MissingNameAndTitleException;
+import greenfox.rest.controller.exceptions.MissingTitleException;
+import greenfox.rest.controller.exceptions.SithException;
 import greenfox.rest.models.AppendA;
 import greenfox.rest.models.ArrayExercise;
 import greenfox.rest.models.DoUntil;
@@ -9,7 +13,6 @@ import greenfox.rest.models.Greeting;
 import greenfox.rest.models.Log;
 import greenfox.rest.models.LogActivity;
 import greenfox.rest.models.Number;
-import greenfox.rest.models.SithText;
 import greenfox.rest.models.Text;
 import greenfox.rest.models.UntilNumber;
 import greenfox.rest.service.LogService;
@@ -18,7 +21,6 @@ import greenfox.rest.service.SithService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,58 +42,69 @@ public class RestController {
   }
 
   @RequestMapping(path = "/doubling", method = RequestMethod.GET)
-  public Object doubleNumber(@RequestParam(required = false) Integer input) {
+  public Number doubleNumber(@RequestParam(required = false) Integer input)
+      throws DoublingException {
     if (input == null) {
-      return new Error("an input");
+      throw new DoublingException();
     }
-    service.getLogRepository().save(new Log("/doubling", input.toString()));
+    logService.addLog(new Log("/doubling", input.toString()));
     return new Number(input);
   }
 
-  @ExceptionHandler(HttpMessageNotReadableException.class)
-  public Error handleMyException(Exception exception) {
-    return new Error("a number");
+  @ExceptionHandler(Exception.class)
+  public Object handleMyException(Exception e) {
+    if (e instanceof DoublingException) {
+      return new ErrorMessage("Please provide an input!");
+    } else if (e instanceof SithException) {
+      return new ErrorMessage("Feed me some text you have to, padawan young you are. Hmmm.");
+    } else if (e instanceof MissingNameAndTitleException){
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorMessage("Please provide a name and a title"));
+    } else if (e instanceof MissingTitleException){
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorMessage("Please provide a title"));
+    }
+    return new ErrorMessage("sth wrong");
   }
 
   @RequestMapping(path = "/greeter", method = RequestMethod.GET)
-  public ResponseEntity<?> greet(@RequestParam(required = false) String name,
-                                 @RequestParam(required = false) String title) {
+  public ResponseEntity<Greeting> greet(@RequestParam(required = false) String name,
+                                 @RequestParam(required = false) String title)
+      throws MissingNameAndTitleException, MissingTitleException {
     if (name == null && title == null) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("a name and a title"));
+      throw new MissingNameAndTitleException();
     } else if (title == null) {
-      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Error("a title"));
+      throw new MissingTitleException();
     }
-    service.getLogRepository().save(new Log("/greeter", name + ", " + title));
+    logService.addLog(new Log("/greeter", name + ", " + title));
     return ResponseEntity.status(HttpStatus.OK).body(new Greeting(name, title));
   }
 
   @RequestMapping(path = "/appenda/{appendable}", method = RequestMethod.GET)
   public AppendA appendLetterA(@PathVariable String appendable) {
-    service.getLogRepository().save(new Log("/appenda/" + appendable, appendable));
+    logService.getLogRepository().save(new Log("/appenda/" + appendable, appendable));
     return new AppendA(appendable);
   }
 
   @RequestMapping(path = "/dountil/{action}", method = RequestMethod.POST)
   public DoUntil doUntil(@PathVariable String action, @RequestBody UntilNumber until) {
-    service.getLogRepository().save(new Log("/dountil/" + action, until.toString()));
+    logService.getLogRepository().save(new Log("/dountil/" + action, until.toString()));
     return service.calculateResult(action, until);
   }
 
   @RequestMapping(path = "/arrays", method = RequestMethod.POST)
   public Object doSthWithArray(@RequestBody ArrayExercise arrayExercise) {
-    service.getLogRepository().save(new Log("/arrays", arrayExercise.toString()));
+    logService.getLogRepository().save(new Log("/arrays", arrayExercise.toString()));
     return service.calculateArray(arrayExercise);
   }
 
   @RequestMapping(path = "/log", method = RequestMethod.GET)
-  public LogActivity getLog(){
+  public LogActivity getLog() {
     return logService.getLogInfo();
   }
 
   @RequestMapping(path = "/sith", method = RequestMethod.POST)
-  public Object sithText(@RequestBody(required = false) Text text){
-    if (text == null){
-      return new ErrorMessage("Feed me some text you have to, padawan young you are. Hmmm.");
+  public Object sithText(@RequestBody(required = false) Text text) throws SithException {
+    if (text == null) {
+      throw new SithException();
     }
     return sithService.changeWordSequence(sithService.separateSentences(text));
   }

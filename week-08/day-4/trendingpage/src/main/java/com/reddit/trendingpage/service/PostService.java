@@ -22,8 +22,8 @@ public class PostService {
   public List<Post> getPosts(){
     return postRepository.findAll();
   }
-  public void upvote(int id){
 
+  public void upvote(int id){
     Post post = postRepository.findById(id).orElseThrow(NoSuchElementException::new);
     post.setVotes(post.getVotes()+1);
     postRepository.save(post);

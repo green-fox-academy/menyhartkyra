@@ -12,12 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 @org.springframework.stereotype.Service
 @Getter
 public class Service {
-  private LogRepository logRepository;
-
-  @Autowired
-  public Service(LogRepository logRepository) {
-    this.logRepository = logRepository;
-  }
 
   public DoUntil calculateResult(String action, UntilNumber untilNumber) {
     int until = untilNumber.getUntil();
