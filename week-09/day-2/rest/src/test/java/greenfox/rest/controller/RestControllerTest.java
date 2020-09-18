@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.internal.JsonContext;
 import greenfox.rest.controller.exceptions.DoublingException;
 import greenfox.rest.controller.exceptions.MissingNameAndTitleException;
 import greenfox.rest.controller.exceptions.MissingTitleException;
@@ -20,6 +24,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.json.JsonContent;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -37,8 +42,17 @@ class RestControllerTest {
   @Test
   void givenIntegerNumber_whenDoubleNumber_thenReturnDoubleValue() throws DoublingException {
     Number expected = new Number(5);
+    ObjectMapper mapper = new ObjectMapper();
+    String json = "";
+    try {
+      json = mapper.writeValueAsString(restController.doubleNumber(5));
+    } catch (JsonProcessingException e) {
+      e.printStackTrace();
+    }
+    int resultNumber = JsonPath.parse(json).read("$['result']");
     Number result = restController.doubleNumber(5);
     assertEquals(expected.toString(), result.toString());
+    assertEquals(10, resultNumber);
   }
 
   @Test
