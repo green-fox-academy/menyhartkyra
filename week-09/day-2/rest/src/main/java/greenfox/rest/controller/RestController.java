@@ -87,7 +87,7 @@ public class RestController {
 
   @RequestMapping(path = "/dountil/{action}", method = RequestMethod.POST)
   public DoUntil doUntil(@PathVariable String action, @RequestBody UntilNumber until) {
-    logService.getLogRepository().save(new Log("/dountil/" + action, until.toString()));
+    logService.addLog(new Log("/dountil/" + action, until.toString()));
     return service.calculateResult(action, until);
   }
 
