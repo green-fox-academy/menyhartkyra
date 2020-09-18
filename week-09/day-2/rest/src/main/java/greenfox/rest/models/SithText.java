@@ -1,14 +1,16 @@
 package greenfox.rest.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 public class SithText {
-  private String sith_text;
+  @JsonProperty("sith_text")
+  private String sithText;
 
-  public SithText(String sith_text) {
-    this.sith_text = sith_text;
+  public SithText(String sithText) {
+    this.sithText = sithText;
   }
 }

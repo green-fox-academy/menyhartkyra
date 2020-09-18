@@ -13,6 +13,7 @@ import greenfox.rest.models.Greeting;
 import greenfox.rest.models.Log;
 import greenfox.rest.models.LogActivity;
 import greenfox.rest.models.Number;
+import greenfox.rest.models.SithText;
 import greenfox.rest.models.Text;
 import greenfox.rest.models.UntilNumber;
 import greenfox.rest.service.LogService;
@@ -102,10 +103,10 @@ public class RestController {
   }
 
   @RequestMapping(path = "/sith", method = RequestMethod.POST)
-  public Object sithText(@RequestBody(required = false) Text text) throws SithException {
-    if (text == null) {
+  public SithText createSithText(@RequestBody(required = false) Text text) throws SithException {
+    if (text == null) { //null kezeles mehet sithservice-be
       throw new SithException();
     }
-    return sithService.changeWordSequence(sithService.separateSentences(text));
+    return sithService.sithText(text);
   }
 }

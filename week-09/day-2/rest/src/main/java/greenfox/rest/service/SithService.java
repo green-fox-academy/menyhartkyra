@@ -26,6 +26,10 @@ public class SithService {
     addDeclarationPoint(randomWords);
   }
 
+  public SithText sithText(Text text){
+    return changeWordSequence(separateSentences(text));
+  }
+
   public List<String> separateSentences(Text text) {
     String allText = text.getText();
     String[] sentences = allText.split("\\. ");
