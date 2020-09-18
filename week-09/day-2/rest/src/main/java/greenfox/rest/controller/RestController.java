@@ -80,7 +80,7 @@ public class RestController {
 
   @RequestMapping(path = "/appenda/{appendable}", method = RequestMethod.GET)
   public AppendA appendLetterA(@PathVariable String appendable) {
-    logService.getLogRepository().save(new Log("/appenda/" + appendable, appendable));
+    logService.addLog(new Log("/appenda/" + appendable, appendable));
     return new AppendA(appendable);
   }
 
@@ -92,7 +92,7 @@ public class RestController {
 
   @RequestMapping(path = "/arrays", method = RequestMethod.POST)
   public Object doSthWithArray(@RequestBody ArrayExercise arrayExercise) {
-    logService.getLogRepository().save(new Log("/arrays", arrayExercise.toString()));
+    logService.addLog(new Log("/arrays", arrayExercise.toString()));
     return service.calculateArray(arrayExercise);
   }
 

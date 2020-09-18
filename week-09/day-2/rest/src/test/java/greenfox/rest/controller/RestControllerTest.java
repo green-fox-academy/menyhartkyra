@@ -1,6 +1,10 @@
 package greenfox.rest.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -11,6 +15,7 @@ import com.jayway.jsonpath.internal.JsonContext;
 import greenfox.rest.controller.exceptions.DoublingException;
 import greenfox.rest.controller.exceptions.MissingNameAndTitleException;
 import greenfox.rest.controller.exceptions.MissingTitleException;
+import greenfox.rest.models.AppendA;
 import greenfox.rest.models.Greeting;
 import greenfox.rest.models.Number;
 import greenfox.rest.repository.LogRepository;
@@ -23,8 +28,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.json.JsonContent;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -40,17 +43,14 @@ class RestControllerTest {
   private RestController restController;
 
   @Test
-  void givenIntegerNumber_whenDoubleNumber_thenReturnDoubleValue() throws DoublingException {
+  void givenIntegerNumber_whenDoubleNumber_thenReturnDoubleValue()
+      throws DoublingException, JsonProcessingException {
     Number expected = new Number(5);
-    ObjectMapper mapper = new ObjectMapper();
-    String json = "";
-    try {
-      json = mapper.writeValueAsString(restController.doubleNumber(5));
-    } catch (JsonProcessingException e) {
-      e.printStackTrace();
-    }
-    int resultNumber = JsonPath.parse(json).read("$['result']");
     Number result = restController.doubleNumber(5);
+    ObjectMapper mapper = new ObjectMapper();
+    String json = mapper.writeValueAsString(result);
+    int resultNumber = JsonPath.parse(json).read("$['result']");
+    verify(logService,atLeastOnce()).addLog(any());
     assertEquals(expected.toString(), result.toString());
     assertEquals(10, resultNumber);
   }
@@ -64,4 +64,18 @@ class RestControllerTest {
     assertEquals(expected.getStatusCodeValue(),result.getStatusCodeValue());
     assertEquals(expected.getBody().getWelcome_message(),result.getBody().getWelcome_message());
   }
+
+  @Test
+  void givenWord_whenAppendLetterA_thenAppend(){
+    AppendA expected = new AppendA("pirosk");
+    AppendA result = restController.appendLetterA("pirosk");
+//    ObjectMapper mapper = new ObjectMapper();
+//    String json = mapper.writeValueAsString(result);
+//    String resultWord = JsonPath.parse(json).read("$['appended']");
+//    assertEquals("piroska",resultWord);
+    assertEquals(expected.getAppended(),result.getAppended());
+  }
+
+  //@Test
+
 }

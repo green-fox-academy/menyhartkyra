@@ -21,8 +21,7 @@ public class LogService {
 
   public LogActivity getLogInfo(){
     LogActivity logActivity = new LogActivity();
-    List<Log> entries = new ArrayList<>();
-    logRepository.findAll().forEach(entries::add);
+    List<Log> entries = logRepository.findAll();
     logActivity.setEntries(entries);
     logActivity.setEntry_count(entries.size());
     return logActivity;
