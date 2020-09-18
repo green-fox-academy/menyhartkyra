@@ -3,7 +3,6 @@ package greenfox.rest.service;
 import greenfox.rest.models.Log;
 import greenfox.rest.models.LogActivity;
 import greenfox.rest.repository.LogRepository;
-import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;

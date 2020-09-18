@@ -7,7 +7,6 @@ import greenfox.rest.controller.exceptions.SithException;
 import greenfox.rest.models.AppendA;
 import greenfox.rest.models.ArrayExercise;
 import greenfox.rest.models.DoUntil;
-import greenfox.rest.models.Error;
 import greenfox.rest.models.ErrorMessage;
 import greenfox.rest.models.Greeting;
 import greenfox.rest.models.Log;
@@ -17,7 +16,7 @@ import greenfox.rest.models.SithText;
 import greenfox.rest.models.Text;
 import greenfox.rest.models.UntilNumber;
 import greenfox.rest.service.LogService;
-import greenfox.rest.service.Service;
+import greenfox.rest.service.CalculatorService;
 import greenfox.rest.service.SithService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,13 +30,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
-  private Service service;
+  private CalculatorService calculatorService;
   private LogService logService;
   private SithService sithService;
 
   @Autowired
-  public RestController(Service service, LogService logService, SithService sithService) {
-    this.service = service;
+  public RestController(CalculatorService calculatorService, LogService logService, SithService sithService) {
+    this.calculatorService = calculatorService;
     this.logService = logService;
     this.sithService = sithService;
   }
@@ -88,13 +87,13 @@ public class RestController {
   @RequestMapping(path = "/dountil/{action}", method = RequestMethod.POST)
   public DoUntil doUntil(@PathVariable String action, @RequestBody UntilNumber until) {
     logService.addLog(new Log("/dountil/" + action, until.toString()));
-    return service.calculateResult(action, until);
+    return calculatorService.calculateResult(action, until);
   }
 
   @RequestMapping(path = "/arrays", method = RequestMethod.POST)
   public Object doSthWithArray(@RequestBody ArrayExercise arrayExercise) {
     logService.addLog(new Log("/arrays", arrayExercise.toString()));
-    return service.calculateArray(arrayExercise);
+    return calculatorService.calculateArray(arrayExercise);
   }
 
   @RequestMapping(path = "/log", method = RequestMethod.GET)

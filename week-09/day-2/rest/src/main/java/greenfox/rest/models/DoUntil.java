@@ -1,12 +1,12 @@
 package greenfox.rest.models;
 
-import greenfox.rest.service.Service;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Repository;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class DoUntil {
   private int result;
 

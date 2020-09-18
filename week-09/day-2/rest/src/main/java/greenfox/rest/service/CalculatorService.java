@@ -5,13 +5,12 @@ import greenfox.rest.models.ArrayResult;
 import greenfox.rest.models.DoUntil;
 import greenfox.rest.models.Error;
 import greenfox.rest.models.UntilNumber;
-import greenfox.rest.repository.LogRepository;
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@org.springframework.stereotype.Service
+@Service
 @Getter
-public class Service {
+public class CalculatorService {
 
   public DoUntil calculateResult(String action, UntilNumber untilNumber) {
     int until = untilNumber.getUntil();
