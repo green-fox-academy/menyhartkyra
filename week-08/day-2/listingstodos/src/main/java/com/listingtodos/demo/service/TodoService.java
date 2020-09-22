@@ -29,6 +29,10 @@ public class TodoService {
 
   public void addTodo(Todo todo){
     taskRepository.save(todo);
+    //user.getTodos().add(todo);
+    System.out.println();
+//    User user = userRepository.getUserByTodos(todo);
+//    user.addTodo(todo);
   }
 
   public List<Todo> getTodosByUser(String username){

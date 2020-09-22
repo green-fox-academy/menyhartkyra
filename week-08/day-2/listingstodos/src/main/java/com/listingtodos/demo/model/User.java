@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import org.hibernate.annotations.Fetch;
 
 @Entity
 public class User {
@@ -48,10 +47,5 @@ public class User {
 
   public String getName() {
     return name;
-  }
-
-  public void addTodo(Todo todo){
-    todo.setUser(this);
-    todos.add(todo);
   }
 }

@@ -2,7 +2,6 @@ package com.listingtodos.demo.controller;
 
 import com.listingtodos.demo.model.Todo;
 import com.listingtodos.demo.model.User;
-import com.listingtodos.demo.repository.TaskRepository;
 import com.listingtodos.demo.repository.UserRepository;
 import com.listingtodos.demo.service.AuthenticationService;
 import com.listingtodos.demo.service.TodoService;
@@ -15,28 +14,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class TodoController {
-  //private TaskRepository taskRepository;
   private AuthenticationService authenticationService;
   private TodoService todoService;
-  //private UserRepository userRepository;
   private User user;
 
   @Autowired
   public TodoController(AuthenticationService authenticationService, TodoService todoService, UserRepository userRepository) {
-    //this.taskRepository = taskRepository;
     this.authenticationService = authenticationService;
     this.todoService = todoService;
-    //this.userRepository = userRepository;
-    user = new User();
   }
-
 
   @RequestMapping(path = "/list")
   public String list(Model model, @RequestParam(required = false) String isActive) {
     if (isActive == null) {
       model.addAttribute("username", user.getName());
       model.addAttribute("todos", todoService.getTodosByUser(user.getName()));
-      //model.addAttribute("todos", taskRepository.findAll());
     } else if (isActive.equals("true")) {
       //model.addAttribute("todos", taskRepository.findAllByDone(false));
     } else if (isActive.equals("false")) {
@@ -44,7 +36,6 @@ public class TodoController {
     }
     return "todolist";
   }
-
 
   @RequestMapping(value = "/add-new-task", method = RequestMethod.GET)
   public String renderNewTaskPage() {
