@@ -26,7 +26,7 @@
         <td th:text="${assignee.id}"></td>
         <td th:text="${assignee.name}"></td>
         <td th:text="${assignee.email}"></td>
-        <td th:text="${assignee.todo}"></td>
+        <td th:text="${assignee.todo.title}"></td>
         <td>
             <form action="/edit-assignee-name" method="get">
                 <label for="editAssigneeName"></label>

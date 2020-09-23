@@ -29,6 +29,7 @@
     <tr>
         <th>ID</th>
         <th>Todo</th>
+        <th>Assignee</th>
         <th>Actions</th>
         <th>Urgent</th>
         <th>Done</th>
@@ -38,6 +39,7 @@
     <tr th:each="task : ${todos}">
         <td th:text="${task.getId()}"></td>
         <td th:text="${task.title}" th:class="${task.done}? 'done'"></td>
+        <td th:text="${task.assignee.name}"></td>
         <td>
             <form action="/remove" method="post">
                 <label for="remove"></label>

@@ -22,7 +22,7 @@ public class Todo {
   private boolean done;
   @ManyToOne(fetch = FetchType.EAGER)
   private User user;
-  @OneToOne(cascade = CascadeType.ALL)
+  @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
   private Assignee assignee; //owner side
 
   public Todo() {
@@ -43,8 +43,6 @@ public class Todo {
   }
 
   //region getters setters
-
-
   public Assignee getAssignee() {
     return assignee;
   }

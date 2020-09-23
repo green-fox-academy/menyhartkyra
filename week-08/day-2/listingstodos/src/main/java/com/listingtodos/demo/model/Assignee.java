@@ -2,6 +2,7 @@ package com.listingtodos.demo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ public class Assignee {
   private int id;
   private String name;
   private String email;
-  @OneToOne(mappedBy = "assignee") //non-owning side
+  @OneToOne(mappedBy = "assignee", fetch = FetchType.EAGER) //non-owning side
   private Todo todo;
 
   public Assignee(String name, String email) {
