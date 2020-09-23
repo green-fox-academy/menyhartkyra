@@ -6,7 +6,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -22,7 +21,7 @@ public class Todo {
   private boolean done;
   @ManyToOne(fetch = FetchType.EAGER)
   private User user;
-  @OneToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+  @OneToOne(fetch = FetchType.EAGER)
   private Assignee assignee; //owner side
 
   public Todo() {

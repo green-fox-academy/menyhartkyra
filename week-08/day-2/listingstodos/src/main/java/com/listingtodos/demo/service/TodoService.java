@@ -34,7 +34,6 @@ public class TodoService {
 
   public void addTodo(Todo todo){
     taskRepository.save(todo);
-    System.out.println();
   }
 
   public List<Todo> getTodosByUser(String username){

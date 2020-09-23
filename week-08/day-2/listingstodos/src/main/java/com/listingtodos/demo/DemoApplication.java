@@ -33,7 +33,7 @@ public class DemoApplication implements CommandLineRunner {
   public void run(String... args){
     Assignee zsolt = new Assignee("Zsolt","zsolt@email.hu");
     Assignee aniko = new Assignee("Aniko","aniko@email.hu");
-    todoService.saveAssignee(zsolt);
+    todoService.saveAssignee(zsolt); //cascadeALL-nál nem kell elmenteni előre az assignee-ket
     todoService.saveAssignee(aniko);
     User user = new User("Kyra","1234");
     authenticationService.addUser(user);

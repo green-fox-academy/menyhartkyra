@@ -24,4 +24,15 @@ public class RestControllerIntegrationTest {
 
   private MockMvc mockMvc;
 
+  @Autowired
+  public RestControllerIntegrationTest(MockMvc mockMvc) {
+    this.mockMvc = mockMvc;
+  }
+
+  @Test
+  void givenInputNumber_whenDoubling_thenReturnNumber() throws Exception {
+  mockMvc.perform(get("/doubling?input=15"))
+      .andExpect(status().isOk())
+      .andExpect(jsonPath("$.result", is(30)));
+  }
 }
