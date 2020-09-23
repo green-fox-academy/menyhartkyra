@@ -7,6 +7,7 @@ import com.listingtodos.demo.repository.AssigneeRepository;
 import com.listingtodos.demo.repository.TaskRepository;
 import com.listingtodos.demo.repository.UserRepository;
 import java.util.List;
+import java.util.NoSuchElementException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,5 +58,15 @@ public class TodoService {
 
   public void saveAssignee(Assignee assignee){
     assigneeRepository.save(assignee);
+  }
+
+  public Assignee findAssigneeById(int id){
+    return assigneeRepository.findById(id);
+  }
+
+  public void editAssigneeName(int assigneeId, String newName){
+    Assignee assignee = assigneeRepository.findById(assigneeId);
+    assignee.setName(newName);
+    saveAssignee(assignee);
   }
 }

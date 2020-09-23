@@ -1,5 +1,6 @@
 package com.listingtodos.demo.controller;
 
+import com.listingtodos.demo.model.Assignee;
 import com.listingtodos.demo.model.Todo;
 import com.listingtodos.demo.model.User;
 import com.listingtodos.demo.repository.UserRepository;
@@ -7,7 +8,9 @@ import com.listingtodos.demo.service.AuthenticationService;
 import com.listingtodos.demo.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -99,9 +102,22 @@ public class TodoController {
     return "redirect:/list";
   }
 
-  @RequestMapping(path = "/assigness")
+  @RequestMapping(path = "/assignees")
   public String listAssignees(Model model){
     model.addAttribute("assignees",todoService.getAssignees());
     return "assignees";
   }
+
+  @RequestMapping(path = "edit-assignee-name", method = RequestMethod.GET)
+  public String renderEditAssigneeNamePage(int assigneeId, Model model){
+    model.addAttribute("assignee",todoService.findAssigneeById(assigneeId));
+    return "edit-assignee-name";
+  }
+
+  @RequestMapping(path = "edit-assignee-name", method = RequestMethod.POST)
+  public String editAssigneeName(String assigneeName, int id){
+    todoService.editAssigneeName(id,assigneeName);
+    return "redirect:/assignees";
+  }
+
 }
