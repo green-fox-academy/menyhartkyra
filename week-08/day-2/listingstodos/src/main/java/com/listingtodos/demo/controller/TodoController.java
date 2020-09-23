@@ -56,7 +56,7 @@ public class TodoController {
     return "redirect:/list?username=" + user.getName();
   }
 
-  @RequestMapping(path = "/find", method = RequestMethod.POST)
+  @RequestMapping(path = "/find-by-title", method = RequestMethod.POST)
   public String findTask(String taskToFind, Model model) {
     model.addAttribute("todos", todoService.findTodoByTitle(taskToFind));
     return "todolist";
@@ -97,5 +97,11 @@ public class TodoController {
     todo.setDone(true);
     todoService.addTodo(todo);
     return "redirect:/list";
+  }
+
+  @RequestMapping(path = "/assigness")
+  public String listAssignees(Model model){
+    model.addAttribute("assignees",todoService.getAssignees());
+    return "assignees";
   }
 }

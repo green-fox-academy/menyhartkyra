@@ -1,7 +1,9 @@
 package com.listingtodos.demo.service;
 
+import com.listingtodos.demo.model.Assignee;
 import com.listingtodos.demo.model.Todo;
 import com.listingtodos.demo.model.User;
+import com.listingtodos.demo.repository.AssigneeRepository;
 import com.listingtodos.demo.repository.TaskRepository;
 import com.listingtodos.demo.repository.UserRepository;
 import java.util.List;
@@ -12,11 +14,13 @@ import org.springframework.stereotype.Service;
 public class TodoService {
   private TaskRepository taskRepository;
   private UserRepository userRepository;
+  private AssigneeRepository assigneeRepository;
 
   @Autowired
-  public TodoService(TaskRepository taskRepository, UserRepository userRepository) {
+  public TodoService(TaskRepository taskRepository, UserRepository userRepository, AssigneeRepository assigneeRepository) {
     this.taskRepository = taskRepository;
     this.userRepository = userRepository;
+    this.assigneeRepository = assigneeRepository;
   }
 
   public void deleteTodo(int taskIndexToRemove){
@@ -47,13 +51,11 @@ public class TodoService {
     return taskRepository.findById(id).orElse(null);
   }
 
-  public void complete(int taskIndexToComplete, User user) {
-    //user.getTodos().get(taskIndexToComplete).setDone(true);
-    List<Todo> todos = taskRepository.findByUserName(user.getName());
-    todos.stream().filter(todo -> todo.getId() == taskIndexToComplete).findFirst().orElse(null).setDone(true);
+  public List<Assignee> getAssignees(){
+    return assigneeRepository.findAll();
+  }
 
-//        taskRepository.findByUserName(username).stream().filter(t -> t.getId() == taskIndexToComplete)
-//        .findFirst().orElse(null);
-//    todo.setDone(true);
+  public void saveAssignee(Assignee assignee){
+    assigneeRepository.save(assignee);
   }
 }
