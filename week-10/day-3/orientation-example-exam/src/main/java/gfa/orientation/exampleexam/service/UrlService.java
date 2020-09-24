@@ -3,6 +3,7 @@ package gfa.orientation.exampleexam.service;
 import gfa.orientation.exampleexam.exception.NotFoundException;
 import gfa.orientation.exampleexam.model.Url;
 import gfa.orientation.exampleexam.repository.UrlRepository;
+import java.util.List;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,5 +45,9 @@ public class UrlService {
 
   public int getSecretCodeByAlias(String alias) {
     return getUrlByAlias(alias).getSecretCode();
+  }
+
+  public List<Url> getUrls(){
+    return urlRepository.findAll();
   }
 }
