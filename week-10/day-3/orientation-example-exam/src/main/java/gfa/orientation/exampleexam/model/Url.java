@@ -24,8 +24,6 @@ public class Url {
   private int secretCode;
 
   public Url() {
-//    hitCount = 0;
-//    secretCode = generateRandomBetween(1000,9999);
   }
 
   public Url(String url, String alias) {
